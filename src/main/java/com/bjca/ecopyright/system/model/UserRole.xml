@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="UserRole">
+	<resultMap id="result" type="UserRole">
+		<result property="id" column="id" />
+		<result property="adminId" column="adminId" />
+		<result property="createDate" column="createDate" />
+		<result property="updateDate" column="updateDate" />
+		<result property="roleId" column="roleId" />
+		<association property="role" column="roleId" select="Role.selectRole"></association>
+	</resultMap>
+	<insert id="insertUserRole" keyProperty="id" parameterType="com.bjca.ecopyright.system.model.UserRole">
+		insert into sys_userrole
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,			
+			</if>
+			<if test="adminId != null">
+				adminId,			
+			</if>
+			<if test="createDate != null">
+				createDate,			
+			</if>
+			<if test="updateDate != null">
+				updateDate,			
+			</if>
+			<if test="roleId != null">
+				roleId			
+			</if>
+		</trim>	
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id},			
+			</if>
+			<if test="adminId != null">
+				#{adminId},			
+			</if>
+			<if test="createDate != null">
+				#{createDate},			
+			</if>
+			<if test="updateDate != null">
+				#{updateDate},			
+			</if>
+			<if test="roleId != null">
+				#{roleId}			
+			</if>
+		</trim>	
+	</insert>
+
+	<update id="updateUserRole" parameterType="com.bjca.ecopyright.system.model.UserRole">
+		update sys_userrole
+		<set>
+			<if test="adminId != null">
+				adminId = #{adminId},			</if>
+			<if test="createDate != null">
+				createDate = #{createDate},			</if>
+			<if test="updateDate != null">
+				updateDate = #{updateDate},			</if>
+			<if test="roleId != null">
+				roleId = #{roleId}			</if>
+		</set>
+			where id=#{id}
+	</update>
+	<delete id="deleteUserRole">
+		delete from sys_userrole where id=#{id}
+	</delete>
+
+	<delete id="deleteUserRoleByAdmin">
+		delete from sys_userrole where adminId=#{adminId}
+	</delete>
+
+	<select id="selectUserRole" resultMap="result">
+		select * from sys_userrole where id=#{id}
+    </select>
+    
+    <select id="queryUserRole" resultType="java.util.List" resultMap="result">
+		select * from sys_userrole 
+		<include refid="Query_Where_Clause" />
+    </select>
+    <!-- 根据用户id查询用户角色关系 -->
+    <select id="selectUserRolesByAdminId" resultType="java.util.List" resultMap="result">
+		select * from sys_userrole where adminId = #{adminId}
+    </select>
+
+	<select id="countUserRole" resultType="int" parameterType="java.util.Map">
+		select count(*) from sys_userrole 
+		<include refid="Query_Where_Clause" />
+   </select>
+    
+	<sql id="Query_Where_Clause">
+		<where>
+			<if test="true">
+				1 = 1
+			</if>
+			<if test="id!=null">
+         		and <![CDATA[ id =id ]]>
+			</if>
+			<if test="adminId!=null">
+         		and adminId = #{adminId}
+			</if>
+		</where>
+	</sql>
+	
+</mapper>

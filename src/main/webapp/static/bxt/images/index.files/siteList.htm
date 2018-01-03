@@ -1,0 +1,129 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0057)http://test1.beijing-marathon.com/system/admin/siteList.h -->
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE></TITLE>
+<META http-equiv=Content-Type content="text/html; charset=utf-8"><LINK 
+href="siteList.files/front.css" type=text/css rel=stylesheet><LINK 
+href="siteList.files/admin.css" type=text/css rel=stylesheet><LINK 
+href="siteList.files/theme.css" type=text/css rel=stylesheet>
+<SCRIPT src="siteList.files/prototype_for_validation.js" 
+type=text/javascript></SCRIPT>
+
+<SCRIPT src="siteList.files/effects.js" type=text/javascript></SCRIPT>
+
+<SCRIPT src="siteList.files/validation_cn.js" type=text/javascript 
+charset=gb2312></SCRIPT>
+
+<SCRIPT src="siteList.files/tooltips.js" type=text/javascript></SCRIPT>
+<LINK href="siteList.files/tooltips.css" type=text/css rel=stylesheet><LINK 
+href="siteList.files/style_min.css" type=text/css rel=stylesheet>
+<STYLE type=text/css>.validation-advice {
+	PADDING-RIGHT: 0px; DISPLAY: inline; PADDING-LEFT: 0px; FONT-WEIGHT: bold; PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px 10px; COLOR: #ff3300; PADDING-TOP: 0px
+}
+</STYLE>
+
+<SCRIPT src="siteList.files/jquery-1.3.2.min.js" type=text/javascript></SCRIPT>
+
+<SCRIPT src="siteList.files/jquery.alerts.js" type=text/javascript></SCRIPT>
+<LINK href="siteList.files/jquery.alerts.css" type=text/css rel=stylesheet>
+<SCRIPT language=javascript>
+        $(function() {
+            $("#checkall").click(function() {
+                if ($("#checkall").attr("checked") == true) {
+                    $("input[name='ids']").each(function() {
+                        $(this).attr("checked", true);
+                    });
+                } else {
+                    $("input[name='ids']").each(function() {
+                        $(this).attr("checked", false);
+                    });
+                }
+            })
+        })
+        function delIds(ids) {
+            if (confirm('您确定要删除吗？')) {
+                location.href = '/system/admin/siteDel.h?delIds=' + ids;
+                return true;
+            }
+            return false;
+        }
+        function delCheckIds() {
+            var ids = '';
+            var idsObj = document.getElementsByName('ids');
+            for (i = 0; i < idsObj.length; i++) {
+                if (idsObj[i].checked == true) {
+                    ids = idsObj[i].value + ',' + ids;
+                }
+            }
+            ids = ids.substring(0, ids.length - 1);
+            if (ids == '') {
+                alert('选择后在删除!!');
+                return false;
+            }
+            delIds(ids);
+            return false;
+        }
+    </SCRIPT>
+
+<META content="MSHTML 6.00.2900.6082" name=GENERATOR></HEAD>
+<BODY>
+<DIV class=body-box>
+<DIV class=rhead>
+<DIV class=rpos>当前位置：核心功能 - 网站管理 - 列表</DIV>
+<DIV class=ropt 
+style="PADDING-RIGHT: 0px; PADDING-LEFT: 20px; PADDING-BOTTOM: 3px; PADDING-TOP: 3px"><A 
+href="http://test1.beijing-marathon.com/system/admin/siteForm.h">添加网站信息</A> 
+</DIV>
+<DIV class=clear></DIV></DIV>
+<TABLE class=pn-ltable cellSpacing=1 cellPadding=0 width="100%" border=0>
+  <THEAD class=pn-lthead>
+  <TR>
+    <TH width=20><INPUT id=checkall type=checkbox value=checkbox></TH>
+    <TH align=middle>网站名称</TH>
+    <TH>网站地址</TH>
+    <TH>栏目及时更新</TH>
+    <TH>内容及时更新</TH>
+    <TH>定时全站更新</TH>
+    <TH>添加时间</TH>
+    <TH>操作</TH></TR></THEAD>
+  <TBODY class=pn-ltbody>
+  <TR>
+    <TD><INPUT id=ids type=checkbox value=1 name=ids></TD>
+    <TD>北京马拉松</TD>
+    <TD>cn</TD>
+    <TD>是 </TD>
+    <TD>是 </TD>
+    <TD>否 </TD>
+    <TD>2010-08-13 14:45:21</TD>
+    <TD class=pn-lopt><A class=pn-loperator 
+      href="http://test1.beijing-marathon.com/system/admin/siteForm.h?sid=1">编辑</A> 
+    </TD></TR>
+  <TR>
+    <TD><INPUT id=ids type=checkbox value=2 name=ids></TD>
+    <TD>Beijing Marathon</TD>
+    <TD>en</TD>
+    <TD>是 </TD>
+    <TD>是 </TD>
+    <TD>否 </TD>
+    <TD>2010-08-13 14:45:21</TD>
+    <TD class=pn-lopt><A class=pn-loperator 
+      href="http://test1.beijing-marathon.com/system/admin/siteForm.h?sid=2">编辑</A> 
+    </TD></TR>
+  <TR>
+    <TD><INPUT id=ids type=checkbox value=3 name=ids></TD>
+    <TD>北京マラソン</TD>
+    <TD>jp</TD>
+    <TD>是 </TD>
+    <TD>是 </TD>
+    <TD>否 </TD>
+    <TD>2011-03-20 19:08:55</TD>
+    <TD class=pn-lopt><A class=pn-loperator 
+      href="http://test1.beijing-marathon.com/system/admin/siteForm.h?sid=3">编辑</A> 
+    </TD></TR></TBODY></TABLE>
+<DIV class=pn-sp style="TEXT-ALIGN: center"><A 
+href="http://test1.beijing-marathon.com/system/admin/siteList.h?pager.items=20&amp;pager.offset=0">首页</A> 
+<FONT color=red>1</FONT> <A 
+href="http://test1.beijing-marathon.com/system/admin/siteList.h?pager.items=20&amp;pager.offset=0">尾页</A> 
+
+<DIV class=clear></DIV></DIV>
+<DIV class=pn-lbopt><INPUT onclick=delCheckIds(); type=button value=删除> 
+</DIV></DIV></BODY></HTML>

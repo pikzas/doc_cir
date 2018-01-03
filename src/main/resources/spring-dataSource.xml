@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	   xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context" xmlns:aop="http://www.springframework.org/schema/aop"
+	   xsi:schemaLocation="
+      http://www.springframework.org/schema/beans 
+      http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+      http://www.springframework.org/schema/tx 
+      http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+      http://www.springframework.org/schema/context
+      http://www.springframework.org/schema/context/spring-context-4.0.xsd
+      http://www.springframework.org/schema/aop
+	  http://www.springframework.org/schema/aop/spring-aop.xsd ">
+
+	<bean id="maindataSource" class="com.jolbox.bonecp.BoneCPDataSource">
+		<property name="driverClass" value="com.mysql.jdbc.Driver" />
+		<!-- 
+		<property name="jdbcUrl" value="jdbc:mysql://192.168.2.112:3306/centerstorage" />
+		-->
+		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/centerstorage_bak" />
+		<!--<property name="jdbcUrl" value="jdbc:mysql://127.0.0.1:3306/centerstorage" />-->
+		<!--<property name="jdbcUrl" value="jdbc:mysql://192.168.2.112:3306/centerstorage" />-->
+		<property name="username" value="root" />
+		<property name="password" value="root" />
+		<property name="idleConnectionTestPeriod" value="60" />
+		<property name="idleMaxAge" value="240" />
+		<property name="maxConnectionsPerPartition" value="100" />
+		<property name="minConnectionsPerPartition" value="10" />
+		<property name="partitionCount" value="3" />
+		<property name="acquireIncrement" value="5" />
+		<property name="statementsCacheSize" value="100" />
+		<property name="releaseHelperThreads" value="3" />
+	</bean>
+
+	<!-- memcached -->
+	<bean id="memcachedClient" class="net.spy.memcached.spring.MemcachedClientFactoryBean">
+		<!--<property name="servers" value="192.168.2.112:11211" />-->
+		<property name="servers" value="192.168.1.70:11211" />
+		<!--<property name="servers" value="101.200.242.176:11211" />-->
+		<property name="protocol" value="BINARY" />
+		<property name="transcoder">
+			<bean class="net.spy.memcached.transcoders.SerializingTranscoder">
+				<property name="compressionThreshold" value="1024" />
+			</bean>
+		</property>
+		<property name="opTimeout" value="1000" />
+		<property name="timeoutExceptionThreshold" value="1998" />
+		<property name="locatorType" value="CONSISTENT" />
+		<property name="failureMode" value="Redistribute" />
+		<property name="useNagleAlgorithm" value="false" />
+	</bean>
+
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
+		p:dataSource-ref="maindataSource" p:defaultTimeout="40">
+	</bean>
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	<context:component-scan base-package="com.bjca">
+		<context:include-filter type="annotation"  expression="org.springframework.stereotype.Controller" />   
+		<context:exclude-filter type="annotation"  expression="org.springframework.stereotype.Service" />
+	</context:component-scan>
+	
+	
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- set the max upload size100MB -->
+		<property name="maxUploadSize">
+			<value>104857600000</value>
+		</property>
+		<property name="maxInMemorySize">
+			<value>4096</value>
+		</property>
+	</bean>
+
+
+	<!--<bean id="cacheUtils" class="com.bjca.ecopyright.util.CacheUtils" />-->
+
+	<!--<aop:config proxy-target-class="true">-->
+		<!--<aop:aspect id="aspect" ref="cacheUtils">-->
+			<!--<aop:pointcut id="memberMgr" expression="execution(* com.bjca.ecopyright.system.dao.*.*(..))"/>-->
+			<!--<aop:around method="doAround"  pointcut-ref="memberMgr"/>-->
+		<!--</aop:aspect>-->
+	<!--</aop:config>-->
+
+</beans>

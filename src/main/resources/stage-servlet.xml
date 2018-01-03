@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p" 
+	xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-4.0.xsd 
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context-4.0.xsd 
+		http://www.springframework.org/schema/mvc 
+		http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+	   	http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx-4.0.xsd"
+	>
+	<!-- 对spring org.lxh包下所有注解扫描 -->
+	<context:component-scan base-package="com.bjca">
+	 <context:exclude-filter type="annotation"  expression="org.springframework.stereotype.Service" />
+	</context:component-scan>
+	<!-- 支持spring mvc新的注解类型 详细spring3.0手册 15.12.1 mvc:annotation-driven-->
+	<mvc:annotation-driven />
+
+	<!--<tx:annotation-driven transaction-manager="transactionManager"/>
+
+	<bean
+			id="transactionManager"
+			class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
+			p:dataSource-ref="dataSource" />-->
+	
+	<bean  id="viewResolver"
+            class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+            <!-- 为了使用JSTL Tag修改默认的viewClass属性 -->
+            <property
+                  name="viewClass"
+                  value="org.springframework.web.servlet.view.JstlView" />
+            <property
+                  name="prefix"
+                  value="/WEB-INF/views/" />
+            <property
+                  name="suffix"
+                  value=".jsp"></property>
+            <property
+                  name="order"
+                  value="1"></property>
+		</bean>
+
+   <!-- 拦截器 -->
+    <mvc:interceptors>
+        <mvc:interceptor>
+	        <mvc:mapping path="/*/*.jhtml"/><!--可以增加多个拦截器需拦截的地址 -->
+	        <mvc:mapping path="/*.jhtml"/>
+	        <bean class="com.bjca.ecopyright.filter.StageSecurityInterceptor"><!--需排除拦截的地址 -->
+	        	<property name="allowUrls">
+	        		<list>
+	        			<value>/center/login.php</value>
+	        			<value>/index.do</value>
+	        		</list>
+	        	</property>
+	        </bean>
+	    </mvc:interceptor>
+    </mvc:interceptors>
+    <!--  
+	 <bean id="viewResolver"
+          class="org.springframework.web.servlet.view.ResourceBundleViewResolver">
+        <property name="basenames">
+            <list>
+                <value>views-stage</value>
+            </list>
+        </property>
+    </bean>
+	-->
+
+</beans>
+
+
+

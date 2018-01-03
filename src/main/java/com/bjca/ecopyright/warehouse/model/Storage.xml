@@ -1,0 +1,487 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Storage">
+	<resultMap id="result" type="Storage">
+		<result property="fid" column="fid" />
+		<result property="id" column="id" />
+		<result property="level" column="level" />
+		<result property="description" column="description" />
+		<result property="usespace" column="usespace" />
+		<result property="name" column="name" />
+		<result property="createdate" column="createdate" />
+		<result property="mark" column="mark" />
+		<result property="updatedate" column="updatedate" />
+		<result property="totalspace" column="totalspace" />
+		<result property="abandonreason" column="abandonreason" />
+		<result property="isabandon" column="isabandon" />
+		<result property="isuse" column="isuse" />
+		<result property="houseorder" column="houseorder" />
+		<result property="locksign" column="locksign" />
+		<result property="surplus" column="surplus" />
+		<result property="groupname" column="groupname" />
+		<association property="software" column="id" select="Software.selectByStorageId"></association>
+	</resultMap>
+
+	<resultMap id="resultVO" type="SoftwareVO">
+		<result property="category" column="category" />
+		<result property="total" column="total" />
+	</resultMap>
+
+	<insert id="insertStorage" keyProperty="id" parameterType="com.bjca.ecopyright.warehouse.model.Storage">
+		insert into storage
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="fid != null">
+				fid,			
+			</if>
+			<if test="id != null">
+				id,			
+			</if>
+			<if test="level != null">
+				level,			
+			</if>
+			<if test="description != null">
+				description,			
+			</if>
+			<if test="usespace != null">
+				usespace,			
+			</if>
+			<if test="name != null">
+				name,			
+			</if>
+			<if test="createdate != null">
+				createdate,			
+			</if>
+			<if test="mark != null">
+				mark,			
+			</if>
+			<if test="updatedate != null">
+				updatedate,			
+			</if>
+			<if test="totalspace != null">
+				totalspace,			
+			</if>
+			<if test="abandonreason != null">
+				abandonreason,			
+			</if>
+			<if test="isabandon != null">
+				isabandon,			
+			</if>
+			<if test="isuse != null">
+				isuse,		
+			</if>
+			<if test="houseorder != null">
+				houseorder,	
+			</if>
+			<if test="locksign != null">
+				locksign,	
+			</if>
+			<if test="surplus != null">
+				surplus,	
+			</if>
+			<if test="groupname != null">
+				groupname	
+			</if>
+		</trim>	
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="fid != null">
+				#{fid},			
+			</if>
+			<if test="id != null">
+				#{id},			
+			</if>
+			<if test="level != null">
+				#{level},			
+			</if>
+			<if test="description != null">
+				#{description},			
+			</if>
+			<if test="usespace != null">
+				#{usespace},			
+			</if>
+			<if test="name != null">
+				#{name},			
+			</if>
+			<if test="createdate != null">
+				#{createdate},			
+			</if>
+			<if test="mark != null">
+				#{mark},			
+			</if>
+			<if test="updatedate != null">
+				#{updatedate},			
+			</if>
+			<if test="totalspace != null">
+				#{totalspace},			
+			</if>
+			<if test="abandonreason != null">
+				#{abandonreason},			
+			</if>
+			<if test="isabandon != null">
+				#{isabandon},			
+			</if>
+			<if test="isuse != null">
+				#{isuse},			
+			</if>
+			<if test="houseorder != null">
+				#{houseorder},			
+			</if>
+			<if test="locksign != null">
+				#{locksign},			
+			</if>
+			<if test="surplus != null">
+				#{surplus},			
+			</if>
+			<if test="groupname != null">
+				#{groupname}			
+			</if>
+		</trim>	
+	</insert>
+
+	<update id="updateStorage" parameterType="com.bjca.ecopyright.warehouse.model.Storage">
+		update storage
+		<set>
+			<if test="fid != null">
+				fid = #{fid},			</if>
+			<if test="houseorder != null">
+				houseorder = #{houseorder},			</if>
+			<if test="level != null">
+				level = #{level},			</if>
+			<if test="description != null">
+				description = #{description},			</if>
+			<if test="usespace != null">
+				usespace = #{usespace},			</if>
+			<if test="name != null">
+				name = #{name},			</if>
+			<if test="createdate != null">
+				createdate = #{createdate},			</if>
+			<if test="mark != null">
+				mark = #{mark},			</if>
+			<if test="updatedate != null">
+				updatedate = #{updatedate},			</if>
+			<if test="totalspace != null">
+				totalspace = #{totalspace},			</if>
+			<if test="abandonreason != null">
+				abandonreason = #{abandonreason},			</if>
+			<if test="isabandon != null">
+				isabandon = #{isabandon},			</if>
+			<if test="isuse != null">
+				isuse = #{isuse},			</if>
+			<if test="locksign != null">
+				locksign = #{locksign},			</if>
+			<if test="surplus != null">
+				surplus = #{surplus},			</if>
+			<if test="groupname != null">
+				groupname = #{groupname}			</if>
+		</set>
+			where id=#{id}
+	</update>
+	<delete id="deleteStorage">
+		delete from storage where id=#{id}
+	</delete>
+
+	<select id="selectStorage" resultMap="result">
+		select * from storage where id=#{id}
+    </select>
+    <!-- 查询所有仓库 -->
+	<select id="selectAllStorage" resultType="java.util.List" resultMap="result">
+		SELECT * FROM ( SELECT * FROM STORAGE WHERE LEVEL = 1 ORDER BY NAME, groupname, houseorder ) a 
+		UNION 
+		SELECT * FROM ( SELECT * FROM STORAGE WHERE LEVEL = 2 ORDER BY cast(NAME AS SIGNED), groupname, houseorder ) b
+    </select>
+    <!-- 查询对应fid的三级节点仓位  -->
+	<select id="queryAllStorageByfid" resultType="java.util.List" resultMap="result">
+		select * from storage where fid=#{fid} order by houseorder 
+    </select>
+    <!--  根据案件id查询 -->
+    <select id="selectByStorageId" resultMap="result">
+		select * from storage where id=#{storageid}
+    </select>
+    <!-- 根据ffid(一级id查找下属的二级仓库) -->
+    <select id="getAllFStorageByFFid" resultType="java.util.List" resultMap="result">
+		select * from storage where fid=#{ffid} and level=2
+    </select>
+    <select id="queryStorage" resultType="java.util.List" resultMap="result">
+		select * from storage 
+		<include refid="Query_Where_Clause" />
+    </select>
+    <!-- 根据软件查找仓库信息 -->
+    <select id="findStorageBySoftwareId" resultType="java.util.List" resultMap="result">
+		select * from storage st where id=(select s_sw.storageid from storage_software s_sw where s_sw.softwareid=#{id})
+    </select>
+    <!-- 根据仓库名查询仓库 -->
+    <select id="findStorageByFFstorageName" resultType="java.util.List" resultMap="result">
+		select * from storage st where level=1 and name=#{name}
+    </select>
+    <!-- 仓库查询 -->
+    <select id="searchWarehouseByParam" resultType="java.util.List" resultMap="result">
+		select sb.* from storage sb 
+		<include refid="Query_Where_Clause_hm_search" />
+   </select>
+	
+	<select id="countStorage" resultType="int" parameterType="java.util.Map">
+		select count(*) from storage 
+		<include refid="Query_Where_Clause" />
+   </select>
+
+
+	<select id="getFStorage" resultType="java.util.List" resultMap="result" >
+		select * from storage where id in (select fid from storage where level = 2 and surplus > 0 and locksign = 0) and mark = #{mark} ORDER BY name
+	</select>
+
+	<select id="findMaxThirdStorage" resultMap="result" >
+		select * from storage WHERE fid = #{fid} AND isuse = '1' ORDER BY houseorder DESC LIMIT 1;
+	</select>
+
+
+	<select id="getSecStorage" resultType="java.util.List" resultMap="resultVO" >
+		SELECT
+			result.id AS category,
+			CONCAT(
+				convert(result.groupname,char),
+				convert(result.name,char),
+				'可用余量:',
+				(
+					CASE
+					WHEN result.maxhouseorder IS NULL THEN
+						convert(result.totalspace,char)
+					WHEN result.maxhouseorder &lt; result.totalspace THEN
+						CONCAT(
+							convert((result.totalspace - result.maxhouseorder),char),
+							'_出证日期:',
+							convert((
+								SELECT
+									DATE_FORMAT(certificatedate,'%Y-%m-%d')
+								FROM
+									software s
+								WHERE
+									s.id = (
+										SELECT
+											softwareid
+										FROM
+											storage_software ss
+										WHERE
+											ss.storageid = (
+												SELECT
+													id
+												FROM
+													`storage` cs
+												WHERE
+													cs.fid = result.id
+												AND cs.isuse = 1
+												LIMIT 1
+											)
+									)
+							),char)
+						)
+					when result.usespace <![CDATA[ <= ]]> result.totalspace then
+						CONCAT(
+								convert(result.surplus,char),
+								'_出证日期:',
+								convert((
+									SELECT
+										DATE_FORMAT(certificatedate,'%Y-%m-%d')
+									FROM
+										software s
+									WHERE
+										s.id = (
+											SELECT
+												softwareid
+											FROM
+												storage_software ss
+											WHERE
+												ss.storageid = (
+													SELECT
+														id
+													FROM
+														`storage` cs
+													WHERE
+														cs.fid = result.id
+													AND cs.isuse = 1
+													LIMIT 1
+												)
+										)
+								),char)
+							)
+					END
+				)
+		) AS total
+		FROM
+			(
+				SELECT
+					*, (
+						SELECT
+							MAX(houseorder)
+						FROM
+							`storage` s2
+						WHERE
+							s2.fid = s1.id
+						AND s2.isuse = 1
+						LIMIT 1
+					) maxhouseorder
+				FROM
+					STORAGE s1
+				WHERE
+					1 = 1
+				AND s1.LEVEL = '2'
+				AND s1.surplus >= 1
+				AND s1.locksign = 0
+				AND s1.isabandon = 0
+				AND s1.fid = #{pos}
+			) result
+		ORDER BY
+			result.groupname,
+			cast(result. NAME AS SIGNED),
+			result.houseorder DESC;
+	</select>
+	
+	<!-- 获取逾期二级仓库 -->
+	<select id="getOverDueSecStorage" resultType="java.util.List" resultMap="resultVO" >
+		SELECT
+			result.id AS category,
+			CONCAT(
+				convert(result.groupname,char),
+				convert(result.name,char),
+				'可用余量:',
+				(
+					CASE
+					WHEN result.maxhouseorder IS NULL THEN
+						convert(result.totalspace,char)
+					WHEN result.maxhouseorder &lt; result.totalspace THEN
+						convert((result.totalspace - result.maxhouseorder),char)				
+					WHEN result.usespace <![CDATA[ <= ]]>  result.totalspace THEN
+						convert(result.surplus,char)
+					END
+				)
+		) AS total
+		FROM
+			(
+				SELECT
+					*, (
+						SELECT
+							MAX(houseorder)
+						FROM
+							`storage` s2
+						WHERE
+							s2.fid = s1.id
+						AND s2.isuse = 1
+						LIMIT 1
+					) maxhouseorder
+				FROM
+					STORAGE s1
+				WHERE
+					1 = 1
+				AND s1.LEVEL = '2'
+				AND s1.surplus >= 1
+				AND s1.locksign = 0
+				AND s1.isabandon = 0
+				AND s1.fid = #{pos}
+			) result
+		ORDER BY
+			result.groupname,
+			cast(result. NAME AS SIGNED),
+			result.houseorder DESC;
+	</select>
+   
+   
+   <select id="queryStorageByParam" resultType="java.util.List" resultMap="result">
+		select * from storage 
+		<include refid="Query_Where_Clause" />
+   </select>
+    
+	<sql id="Query_Where_Clause">
+		<where>
+			<if test="true">
+				1 = 1
+			</if>
+			<if test="id!=null">
+         		and <![CDATA[ id =id ]]>
+			</if>
+			<if test="level!=null">
+         		and level = '${level}' 
+			</if>
+			<if test="storeName!=null">
+         		and name = '${storeName}'
+			</if>
+			<if test="groupName!=null">
+         		and groupName = '${groupName}'
+			</if>
+			<if test="surplus!=null">
+         		and surplus <![CDATA[ >= ]]> ${surplus}
+			</if>
+			<if test="surplus_gt!=null">
+				and surplus <![CDATA[ >= ]]> ${surplus_gt}
+			</if>
+			<if test="houseorder!=null">
+         		and houseorder = ${houseorder}
+			</if>
+			<if test="locksign!=null">
+         		and locksign = ${locksign} 
+			</if>
+			<if test="isabandon!=null">
+         		and isabandon = ${isabandon}
+			</if>
+			<if test="fid !=null and fid=='fid_notNull'">
+				and fid is not null
+			</if>
+			<if test="fid_isNull !=null and fid_isNull=='fid_isNull'">
+				and fid is null
+			</if>
+			<if test="fid !=null">
+				and fid ='${fid}'
+			</if>
+			order by groupname,cast(name as SIGNED),houseorder desc
+		</where>
+	</sql>
+	
+	
+	
+	<sql id="Query_Where_Clause_hm_search">
+		<where>
+			<if test="true">
+				1 = 1
+			</if>
+			<if test="surplus !=null">
+				and sb.surplus =${surplus}
+			</if>
+			<if test="surplus_gt!=null">
+         		and sb.surplus <![CDATA[ >= ]]> ${surplus_gt}
+			</if>
+			<if test="level !=null">
+				and sb.level =${level}
+			</if>
+			<if test="locksign !=null">
+				and sb.locksign =${locksign}
+			</if>
+			<if test="softWareState != null and certificatedate != null">
+				and sb.id in (select sa.fid from storage sa
+									where sa.id in 
+										(select ssw.storageid from storage_software ssw
+												where ssw.softwareid in
+														(select sw_swa.id from software sw_swa where sw_swa.softwarestatus=${softWareState} and date_format(sw_swa.certificatedate,'%Y-%m-%d')='${certificatedate}')
+										) group by sa.fid
+							) 
+			</if>
+			<if test="softWareState == null and certificatedate != null">
+				and sb.id in (select sa.fid from storage sa
+									where sa.id in 
+										(select ssw.storageid from storage_software ssw
+												where ssw.softwareid in
+														(select sw_swa.id from software sw_swa where date_format(sw_swa.certificatedate,'%Y-%m-%d')='${certificatedate}')
+										) group by sa.fid
+							) 
+			</if>
+			<if test="softWareState != null and certificatedate == null">
+				and sb.id in (select sa.fid from storage sa
+									where sa.id in 
+										(select ssw.storageid from storage_software ssw
+												where ssw.softwareid in
+														(select sw_swa.id from software sw_swa where sw_swa.softwarestatus=${softWareState})
+										) group by sa.fid
+							) 
+			</if>
+			group by sb.groupname,sb.name
+		</where>
+	</sql>
+	
+</mapper>

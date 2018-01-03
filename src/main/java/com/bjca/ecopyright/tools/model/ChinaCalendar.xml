@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ChinaCalendar">
+	<resultMap id="result" type="ChinaCalendar">
+		<result property="id" column="id" />
+		<result property="date" column="date" />
+		<result property="isWeekend" column="isWeekend" />
+		<result property="isHoliday" column="isHoliday" />
+		<result property="isWorkday" column="isWorkday" />
+		<result property="rankWorkday" column="rankWorkday" />
+		
+
+	</resultMap>
+	<insert id="insertChinaCalendar" keyProperty="id" parameterType="com.bjca.ecopyright.tools.model.ChinaCalendar">
+		insert into tool_chinacalendar
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="date != null">
+				date,
+			</if>
+			<if test="isWeekend != null">
+				isWeekend,
+			</if>
+			<if test="isHoliday != null">
+				isHoliday,
+			</if>
+			<if test="isWorkday != null">
+				isWorkday,
+			</if>
+			<if test="rankWorkday != null">
+				rankWorkday
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id},
+			</if>
+			<if test="date != null">
+				#{date},
+			</if>
+			<if test="isWeekend != null">
+				#{isWeekend},
+			</if>
+			<if test="isHoliday != null">
+				#{isHoliday},
+			</if>
+			<if test="isWorkday != null">
+				#{isWorkday},
+			</if>
+			<if test="rankWorkday != null">
+				#{rankWorkday}
+			</if>
+		</trim>
+	</insert>
+
+	<update id="updateChinaCalendar" parameterType="com.bjca.ecopyright.tools.model.ChinaCalendar">
+		update tool_ChinaCalendar
+		<set>
+			<if test="date != null">
+				date = #{date},
+			</if>
+			<if test="isWeekend != null">
+				isWeekend = #{isWeekend},
+			</if>
+			<if test="isHoliday != null">
+				isHoliday = #{isHoliday},
+			</if>
+			<if test="isWorkday != null">
+				isWorkday = #{isWorkday},
+			</if>
+			<if test="rankWorkday != null">
+				rankWorkday = #{rankWorkday}
+			</if>
+		</set>
+		where id=#{id}
+	</update>
+	<delete id="deleteChinaCalendar">
+		delete from tool_ChinaCalendar where id=#{id}
+	</delete>
+
+	<select id="selectChinaCalendar" resultMap="result">
+		select * from tool_ChinaCalendar where id=#{id}
+	</select>
+	<select id="queryChinaCalendar" resultType="java.util.List" resultMap="result">
+		select * from tool_ChinaCalendar
+		<include refid="Query_Where_Clause" />
+	</select>
+
+	<select id="countChinaCalendar" resultType="int" parameterType="java.util.Map">
+		select count(*) from tool_ChinaCalendar
+		<include refid="Query_Where_Clause" />
+	</select>
+	<select id="queryListChinaCalendar" resultType="java.util.List" resultMap="result">
+		SELECT
+			sum(isWeekend) isWeekend,
+			sum(isHoliday) isHoliday,
+			sum(isWorkday) isWorkday
+		FROM
+			tool_chinacalendar 
+		<include refid="Query_Where_Clause" />
+	</select>
+	<!-- 查询当前时间 -->
+	<select id="queryChinaCalendarByDate" resultMap="result">
+		SELECT
+			*
+		FROM
+			tool_ChinaCalendar
+		WHERE
+		DATE_FORMAT(date,'%Y-%m-%d') = #{date}
+	</select>
+	<select id="queryRankWorkday" resultType="java.util.Date">
+		SELECT
+			date
+		FROM
+			tool_chinacalendar
+		WHERE
+			rankWorkday = (
+				(
+					SELECT
+						rankWorkday
+					FROM
+						tool_chinacalendar
+					WHERE
+						date = DATE_FORMAT(NOW(), '%y-%m-%d')
+				) + #{urgentDays}
+			)
+	</select>
+
+
+	<select id="queryThePointedDay" resultType="java.util.Date">
+		SELECT
+		date
+		FROM
+		tool_chinacalendar
+		WHERE
+		rankWorkday = (
+		(
+		SELECT
+		rankWorkday
+		FROM
+		tool_chinacalendar
+		WHERE
+		date = DATE_FORMAT(#{theDate}, '%y-%m-%d')
+		) - #{urgentDays}
+		)
+	</select>
+	<sql id="Query_Where_Clause">
+		<where>
+			<if test="true">
+				1 = 1
+			</if>
+			<if test="(date1 != null)&amp;&amp;(date2 != null)">
+				AND date between '${date1}' AND '${date2}'
+			</if>
+			order by date desc
+		</where>
+	</sql>
+
+</mapper>

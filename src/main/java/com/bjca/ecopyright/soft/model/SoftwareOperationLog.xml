@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SoftwareOperationLog">
+	<resultMap id="result" type="SoftwareOperationLog">
+		<result property="certificatedate" column="certificatedate" />
+		<result property="salesman" column="salesman" />
+		<result property="id" column="id" />
+		<result property="acceptdate" column="acceptdate" />
+		<result property="description" column="description" />
+		<result property="softwarename" column="softwarename" />
+		<result property="applyperson" column="applyperson" />
+		<result property="serialnum" column="serialnum" />
+		<result property="createdate" column="createdate" />
+		<result property="updatedate" column="updatedate" />
+		<result property="adminid" column="adminid" />
+		<result property="softwarestatus" column="softwarestatus" />
+		<result property="isexist" column="isexist" />
+		<result property="temphouseorder" column="temphouseorder" />
+		<result property="matchsign" column="matchsign" />
+		<result property="trialId" column="trialId" />
+		<result property="centeracceptdate" column="centeracceptdate" />
+		<result property="operationType" column="operationType" />
+		<association property="admin" column="adminid" select="Admin.selectByAdminId"></association>
+		<association property="trialAdmin" column="trialId" select="Admin.selectByAdminId"></association>
+		<association property="storage" column="id" select="Storage.findStorageBySoftwareId"></association>
+<!-- <association property="storageSoftware" column="id" select="StorageSoftware.selectBySoftwareId"></association> -->
+	</resultMap>
+	<insert id="insertSoftwareOperationLog" keyProperty="id" parameterType="com.bjca.ecopyright.soft.model.SoftwareOperationLog">
+		insert into softwareoperationlog
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="certificatedate != null">
+				certificatedate,			
+			</if>
+			<if test="salesman != null">
+				salesman,			
+			</if>
+			<if test="id != null">
+				id,			
+			</if>
+			<if test="acceptdate != null">
+				acceptdate,			
+			</if>
+			<if test="description != null">
+				description,			
+			</if>
+			<if test="softwarename != null">
+				softwarename,			
+			</if>
+			<if test="applyperson != null">
+				applyperson,			
+			</if>
+			<if test="serialnum != null">
+				serialnum,			
+			</if>
+			<if test="createdate != null">
+				createdate,			
+			</if>
+			<if test="updatedate != null">
+				updatedate,			
+			</if>
+			<if test="adminid != null">
+				adminid	,		
+			</if>
+			<if test="softwarestatus != null">
+				softwarestatus	,		
+			</if>
+			<if test="isexist != null">
+				isexist,			
+			</if>
+			<if test="temphouseorder != null">
+				temphouseorder,			
+			</if>
+			<if test="matchsign != null">
+				matchsign,			
+			</if>
+			<if test="trialId != null">
+				trialId	,		
+			</if>
+			<if test="centeracceptdate != null">
+				centeracceptdate,			
+			</if>
+			<if test="operationType != null">
+				operationType			
+			</if>
+		</trim>	
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="certificatedate != null">
+				#{certificatedate},			
+			</if>
+			<if test="salesman != null">
+				#{salesman},			
+			</if>
+			<if test="id != null">
+				#{id},			
+			</if>
+			<if test="acceptdate != null">
+				#{acceptdate},			
+			</if>
+			<if test="description != null">
+				#{description},			
+			</if>
+			<if test="softwarename != null">
+				#{softwarename},			
+			</if>
+			<if test="applyperson != null">
+				#{applyperson},			
+			</if>
+			<if test="serialnum != null">
+				#{serialnum},			
+			</if>
+			<if test="createdate != null">
+				#{createdate},			
+			</if>
+			<if test="updatedate != null">
+				#{updatedate},			
+			</if>
+			<if test="adminid != null">
+				#{adminid},			
+			</if>
+			<if test="softwarestatus != null">
+				#{softwarestatus},			
+			</if>
+			<if test="isexist != null">
+				#{isexist},			
+			</if>
+			<if test="temphouseorder != null">
+				#{temphouseorder},			
+			</if>
+			<if test="matchsign != null">
+				#{matchsign},			
+			</if>
+			<if test="trialId != null">
+				#{trialId},			
+			</if>
+			<if test="centeracceptdate != null">
+				#{centeracceptdate},			
+			</if>
+			<if test="operationType != null">
+				#{operationType}			
+			</if>
+		</trim>	
+	</insert>
+
+	<update id="updateSoftwareOperationLog" parameterType="com.bjca.ecopyright.soft.model.SoftwareOperationLog">
+		update softwareoperationlog
+		<set>
+			<if test="certificatedate != null">
+				certificatedate = #{certificatedate},			</if>
+			<if test="salesman != null">
+				salesman = #{salesman},			</if>
+			<if test="acceptdate != null">
+				acceptdate = #{acceptdate},			</if>
+			<if test="description != null">
+				description = #{description},			</if>
+			<if test="softwarename != null">
+				softwarename = #{softwarename},			</if>
+			<if test="applyperson != null">
+				applyperson = #{applyperson},			</if>
+			<if test="serialnum != null">
+				serialnum = #{serialnum},			</if>
+			<if test="createdate != null">
+				createdate = #{createdate},			</if>
+			<if test="updatedate != null">
+				updatedate = #{updatedate},			</if>
+			<if test="adminid != null">
+				adminid = #{adminid},			</if>
+			<if test="softwarestatus != null">
+				softwarestatus = #{softwarestatus},		</if>
+			<if test="isexist != null">
+				isexist = #{isexist},			</if>
+			<if test="temphouseorder != null">
+				temphouseorder = #{temphouseorder},			</if>
+			<if test="matchsign != null">
+				matchsign = #{matchsign},			</if>
+			<if test="trialId != null">
+				trialId = #{trialId},			</if>
+			<if test="centeracceptdate != null">
+				centeracceptdate = #{centeracceptdate},			</if>
+			<if test="operationType != null">
+				operationType = #{operationType}			</if>
+		</set>
+			where id=#{id}
+	</update>
+	<delete id="deleteSoftwareOperationLog">
+		delete from softwareoperationlog where id=#{id}
+	</delete>
+
+	<select id="selectSoftwareOperationLog" resultMap="result">
+		select * from softwareoperationlog where id=#{id}
+    </select>
+	<select id="selectByserialnum" resultType="java.util.List" resultMap="result">
+		select * from softwareoperationlog where serialnum=#{serialnum}
+    </select>
+    
+    <select id="querySoftwareOperationLog" resultType="java.util.List" resultMap="result">
+		select * from softwareoperationlog 
+		<include refid="Query_Where_Clause" />
+    </select>
+
+	<select id="countSoftwareOperationLog" resultType="int" parameterType="java.util.Map">
+		select count(*) from softwareoperationlog 
+		<include refid="Query_Where_Clause" />
+   </select>
+    
+	<sql id="Query_Where_Clause">
+		<where>
+			<if test="true">
+				1 = 1
+			</if>
+			<if test="serialnum != null">
+				and serialnum like '%${serialnum}%'
+			</if>
+			<if test="adminid != null">
+				and adminid  = #{adminid}
+			</if>
+			<if test="softwarestatus != null">
+				and softwarestatus = #{softwarestatus}
+			</if>
+			<if test="certificatedate1 != null and certificatedate2 !=null">
+				and certificatedate <![CDATA[  >=  ]]> '${certificatedate1}' and  certificatedate<![CDATA[   <=  ]]>'${certificatedate2}'
+			</if>
+			<if test="certificatedate != null ">
+				and certificatedate = #{certificatedate}
+			</if>
+			order by createdate
+		</where>
+	</sql>
+	
+</mapper>

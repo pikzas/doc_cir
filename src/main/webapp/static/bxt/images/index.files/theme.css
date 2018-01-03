@@ -1,0 +1,96 @@
+.pn-ftable {
+	MARGIN-TOP: 5px; BACKGROUND-COLOR: #b4cfcf
+}
+.pn-flabel {
+	PADDING-RIGHT: 3px; BACKGROUND-COLOR: #f9fbfd; TEXT-ALIGN: right
+}
+.pn-flabel-h {
+	HEIGHT: 27px
+}
+.pn-fcontent {
+	PADDING-LEFT: 5px; BACKGROUND-COLOR: #ffffff
+}
+.pn-fbutton {
+	BACKGROUND-COLOR: #ffffff; TEXT-ALIGN: center
+}
+.pn-fhelp {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 3px; COLOR: #747474; PADDING-TOP: 3px
+}
+.pn-frequired {
+	COLOR: red
+}
+.pn-fruler {
+	BACKGROUND: url(../images/admin/ruler.gif) repeat-x 1px 6px
+}
+.pn-ltable {
+	MARGIN: 5px auto 0px; BACKGROUND-COLOR: #e2ebef
+}
+.pn-lthead {
+	
+}
+.pn-lthead TH {
+	BACKGROUND-IMAGE: url(../images/theme/msg_bg.jpg); HEIGHT: 27px
+}
+.pn-ltbody {
+	BACKGROUND-COLOR: #ffffff
+}
+.pn-ltbody TR {
+	HEIGHT: 25px
+}
+.pn-lhover {
+	BACKGROUND-COLOR: #f2f2f2
+}
+.pn-lselected {
+	BACKGROUND-COLOR: #d9e8fb
+}
+.pn-lnoresult {
+	BORDER-RIGHT: #b4cfcf 1px solid; PADDING-RIGHT: 10px; BORDER-TOP: #b4cfcf 1px solid; PADDING-LEFT: 10px; FONT-WEIGHT: bold; PADDING-BOTTOM: 10px; BORDER-LEFT: #b4cfcf 1px solid; COLOR: red; PADDING-TOP: 10px; BORDER-BOTTOM: #b4cfcf 1px solid; TEXT-ALIGN: center
+}
+.pn-lbopt {
+	BORDER-RIGHT: #b4cfcf 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #b4cfcf 1px solid; MARGIN-TOP: 2px; PADDING-LEFT: 5px; PADDING-BOTTOM: 5px; BORDER-LEFT: #b4cfcf 1px solid; PADDING-TOP: 5px; BORDER-BOTTOM: #b4cfcf 1px solid
+}
+.pn-lopt {
+	TEXT-ALIGN: center
+}
+A.pn-loperator {
+	TEXT-DECORATION: underline
+}
+A.pn-loperator:link {
+	COLOR: #2366a8
+}
+A.pn-loperator:visited {
+	COLOR: #2366a8
+}
+A.pn-loperator:hover {
+	COLOR: #2366a8
+}
+A.pn-loperator:active {
+	COLOR: #2366a8
+}
+.pn-sp {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; BACKGROUND-IMAGE: url(../images/theme/pbg.jpg); PADDING-BOTTOM: 1px; MARGIN: 3px auto 0px; PADDING-TOP: 1px; HEIGHT: 28px
+}
+.pn-sp-left {
+	PADDING-LEFT: 10px; FLOAT: left; WIDTH: 24%
+}
+.pn-sp-right {
+	FLOAT: left; WIDTH: 74%; TEXT-ALIGN: center
+}
+.pn-tree {
+	FONT-SIZE: 12px
+}
+.pn-tree  {
+	WORD-BREAK: keep-all; WHITE-SPACE: nowrap
+}
+.pn-tree IMG {
+	VERTICAL-ALIGN: middle
+}
+.pn-tree-hover {
+	BACKGROUND-COLOR: #f5f5f5
+}
+.pn-tree-selected {
+	BACKGROUND-COLOR: #ddecef
+}
+.pn-tree-checkbox {
+	VERTICAL-ALIGN: middle
+}

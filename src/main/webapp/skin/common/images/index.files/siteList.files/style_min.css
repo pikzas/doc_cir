@@ -1,0 +1,21 @@
+SELECT.validation-failed {
+	BORDER-RIGHT: #ff3300 1px solid; BORDER-TOP: #ff3300 1px solid; BORDER-LEFT: #ff3300 1px solid; COLOR: #ff3300; BORDER-BOTTOM: #ff3300 1px solid
+}
+INPUT.validation-failed {
+	BORDER-RIGHT: #ff3300 1px solid; BORDER-TOP: #ff3300 1px solid; BORDER-LEFT: #ff3300 1px solid; COLOR: #ff3300; BORDER-BOTTOM: #ff3300 1px solid
+}
+TEXTAREA.validation-failed {
+	BORDER-RIGHT: #ff3300 1px solid; BORDER-TOP: #ff3300 1px solid; BORDER-LEFT: #ff3300 1px solid; COLOR: #ff3300; BORDER-BOTTOM: #ff3300 1px solid
+}
+ HTML SELECT.validation-failed {
+	BACKGROUND-COLOR: #e8cdb9
+}
+.validation-advice {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-WEIGHT: bold; PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px 10px; COLOR: #ff3300; PADDING-TOP: 0px
+}
+.custom-advice1 {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 5px; FONT-WEIGHT: bold; PADDING-BOTTOM: 5px; MARGIN: 5px 0px; COLOR: #ff3300; PADDING-TOP: 5px; BACKGROUND-COLOR: #dff3fb
+}
+.custom-advice2 {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 5px; FONT-WEIGHT: bold; PADDING-BOTTOM: 5px; MARGIN: 5px 0px; COLOR: #fff; PADDING-TOP: 5px; BACKGROUND-COLOR: #ff3300
+}

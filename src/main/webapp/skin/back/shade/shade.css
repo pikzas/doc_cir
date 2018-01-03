@@ -1,0 +1,11 @@
+#bjui-pageContent
+{
+    position: absolute;
+    width: 700px;
+    height: 500px;
+    font-size: 12px;
+    background: #fff;
+    border: 0px solid #000;
+    z-index: 10001;
+    display: none;
+}

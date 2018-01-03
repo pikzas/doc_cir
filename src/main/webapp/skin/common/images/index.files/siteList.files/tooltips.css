@@ -1,0 +1,63 @@
+.tooltip {
+	FONT-SIZE: 12px; Z-INDEX: 10000! important; OVERFLOW: hidden; POSITION: absolute! important
+}
+.tooltip .xtop {
+	DISPLAY: block; FONT-SIZE: 1px; BACKGROUND: none transparent scroll repeat 0% 0%
+}
+.tooltip .xbottom {
+	DISPLAY: block; FONT-SIZE: 1px; BACKGROUND: none transparent scroll repeat 0% 0%
+}
+.tooltip .xb1 {
+	DISPLAY: block; OVERFLOW: hidden
+}
+.tooltip .xb2 {
+	DISPLAY: block; OVERFLOW: hidden
+}
+.tooltip .xb3 {
+	DISPLAY: block; OVERFLOW: hidden
+}
+.tooltip .xb4 {
+	DISPLAY: block; OVERFLOW: hidden
+}
+.tooltip .xb1 {
+	HEIGHT: 1px
+}
+.tooltip .xb2 {
+	HEIGHT: 1px
+}
+.tooltip .xb3 {
+	HEIGHT: 1px
+}
+.tooltip .xb2 {
+	BORDER-RIGHT: #333 1px solid; BACKGROUND: #666; BORDER-LEFT: #333 1px solid
+}
+.tooltip .xb3 {
+	BORDER-RIGHT: #333 1px solid; BACKGROUND: #666; BORDER-LEFT: #333 1px solid
+}
+.tooltip .xb4 {
+	BORDER-RIGHT: #333 1px solid; BACKGROUND: #666; BORDER-LEFT: #333 1px solid
+}
+.tooltip .xbottom .xb2 {
+	BACKGROUND: #666
+}
+.tooltip .xbottom .xb3 {
+	BACKGROUND: #666
+}
+.tooltip .xbottom .xb4 {
+	BACKGROUND: #666
+}
+.tooltip .xb1 {
+	BACKGROUND: #333; MARGIN: 0px 5px
+}
+.tooltip .xb2 {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 2px; BORDER-BOTTOM-WIDTH: 0px; MARGIN: 0px 3px; BORDER-RIGHT-WIDTH: 2px
+}
+.tooltip .xb3 {
+	MARGIN: 0px 2px
+}
+.tooltip .xb4 {
+	MARGIN: 0px 1px; HEIGHT: 2px
+}
+.tooltip .xboxcontent {
+	BORDER-RIGHT: #333 1px solid; PADDING-RIGHT: 0.5em; BORDER-TOP: #333 0px solid; PADDING-LEFT: 0.5em; PADDING-BOTTOM: 0px; MARGIN: 0px; BORDER-LEFT: #333 1px solid; COLOR: #000; PADDING-TOP: 0px; BORDER-BOTTOM: #333 0px solid; BACKGROUND-COLOR: #666; WORD-WRAP: break-word; text-shadow: 2px 2px 0px #CCC
+}

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="StorageSoftware">
+	<resultMap id="result" type="StorageSoftware">
+		<result property="id" column="id" />
+		<result property="softwareid" column="softwareid" />
+		<result property="storageid" column="storageid" />
+		<result property="createdate" column="createdate" />
+		<result property="updatedate" column="updatedate" />
+		<!-- <association property="storage" column="storageid" select="Storage.selectByStorageId"></association> -->
+	</resultMap>
+	<insert id="insertStorageSoftware" keyProperty="id" parameterType="com.bjca.ecopyright.warehouse.model.StorageSoftware">
+		insert into storage_software
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,			
+			</if>
+			<if test="softwareid != null">
+				softwareid,			
+			</if>
+			<if test="storageid != null">
+				storageid,			
+			</if>
+			<if test="createdate != null">
+				createdate,			
+			</if>
+			<if test="updatedate != null">
+				updatedate			
+			</if>
+		</trim>	
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id},			
+			</if>
+			<if test="softwareid != null">
+				#{softwareid},			
+			</if>
+			<if test="storageid != null">
+				#{storageid},			
+			</if>
+			<if test="createdate != null">
+				#{createdate},			
+			</if>
+			<if test="updatedate != null">
+				#{updatedate}			
+			</if>
+		</trim>	
+	</insert>
+
+	<update id="updateStorageSoftware" parameterType="com.bjca.ecopyright.warehouse.model.StorageSoftware">
+		update storage_software
+		<set>
+			<if test="softwareid != null">
+				softwareid = #{softwareid},			</if>
+			<if test="storageid != null">
+				storageid = #{storageid},			</if>
+			<if test="createdate != null">
+				createdate = #{createdate},			</if>
+			<if test="updatedate != null">
+				updatedate = #{updatedate}			</if>
+		</set>
+			where id=#{id}
+	</update>
+	<delete id="deleteStorageSoftware">
+		delete from storage_software where id=#{id}
+	</delete>
+
+	<select id="selectStorageSoftware" resultMap="result">
+		select * from storage_software where id=#{id}
+    </select>
+   <!--  根据案件id查询 -->
+    <select id="selectBySoftwareId" resultMap="result">
+		select * from storage_software where softwareid=#{id}
+    </select>
+    <select id="queryStorageSoftware" resultType="java.util.List" resultMap="result">
+		select * from storage_software 
+		<include refid="Query_Where_Clause" />
+    </select>
+
+	<select id="countStorageSoftware" resultType="int" parameterType="java.util.Map">
+		select count(1) from storage_software
+		<include refid="Query_Where_Clause" />
+   </select>
+
+	<select id="isExist" resultType="int">
+		select count(1) from storage_software where softwareid=#{id}
+	</select>
+
+
+	<sql id="Query_Where_Clause">
+		<where>
+			<if test="true">
+				1 = 1
+			</if>
+			<if test="id!=null">
+         		<![CDATA[ id =id ]]>
+			</if>
+		</where>
+	</sql>
+	
+</mapper>

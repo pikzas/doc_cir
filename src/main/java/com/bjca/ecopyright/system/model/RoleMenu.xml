@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="RoleMenu">
+	<resultMap id="result" type="RoleMenu">
+		<result property="id" column="id" />
+		<result property="functions" column="functions" />
+		<result property="menuId" column="menuId" />
+		<result property="createDate" column="createDate" />
+		<result property="updateDate" column="updateDate" />
+		<result property="roleId" column="roleId" />
+		<association property="menu" column="menuId" select="Menu.queryMenuListById"></association>
+	</resultMap>
+	<insert id="insertRoleMenu" keyProperty="id" parameterType="com.bjca.ecopyright.system.model.RoleMenu">
+		insert into sys_role_menu
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,			
+			</if>
+			<if test="functions != null">
+				functions,			
+			</if>
+			<if test="menuId != null">
+				menuId,			
+			</if>
+			<if test="createDate != null">
+				createDate,			
+			</if>
+			<if test="updateDate != null">
+				updateDate,			
+			</if>
+			<if test="roleId != null">
+				roleId			
+			</if>
+		</trim>	
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id},			
+			</if>
+			<if test="functions != null">
+				#{functions},			
+			</if>
+			<if test="menuId != null">
+				#{menuId},			
+			</if>
+			<if test="createDate != null">
+				#{createDate},			
+			</if>
+			<if test="updateDate != null">
+				#{updateDate},			
+			</if>
+			<if test="roleId != null">
+				#{roleId}			
+			</if>
+		</trim>	
+	</insert>
+
+	<update id="updateRoleMenu" parameterType="com.bjca.ecopyright.system.model.RoleMenu">
+		update sys_role_menu
+		<set>
+			<if test="functions != null">
+				functions = #{functions},			</if>
+			<if test="menuId != null">
+				menuId = #{menuId},			</if>
+			<if test="createDate != null">
+				createDate = #{createDate},			</if>
+			<if test="updateDate != null">
+				updateDate = #{updateDate},			</if>
+			<if test="roleId != null">
+				roleId = #{roleId}			</if>
+		</set>
+			where id=#{id}
+	</update>
+	<delete id="deleteByRole">
+		delete from sys_role_menu where roleId=#{roleID}
+	</delete>
+
+	<delete id="deleteByMenu">
+		delete from sys_role_menu where menuId=#{menuID}
+	</delete>
+
+
+	<delete id="deleteRoleMenu">
+		delete from sys_role_menu where id=#{id}
+	</delete>
+
+	<select id="selectRoleMenu" resultMap="result">
+		select * from sys_role_menu where id=#{id}
+    </select>
+    
+    <select id="queryRoleMenu" resultType="java.util.List" resultMap="result">
+		select * from sys_role_menu 
+		<include refid="Query_Where_Clause" />
+    </select>
+    <!-- 根据角色id查询 -->
+    <select id="selectRoleMenusByRoleId" resultType="java.util.List" resultMap="result">
+		select * from sys_role_menu where roleId = #{roleId}
+    </select>
+
+	<select id="getRoleMenuByMap" resultType="java.util.List" resultMap="result">
+		select * from sys_role_menu
+		<include refid="Query_Where_Clause" />
+	</select>
+
+	<select id="countRoleMenu" resultType="int" parameterType="java.util.Map">
+		select count(*) from sys_role_menu 
+		<include refid="Query_Where_Clause" />
+   </select>
+    
+	<sql id="Query_Where_Clause">
+		<where>
+			<if test="true">
+				1 = 1
+			</if>
+			<if test="roleId!=null">
+				AND roleId = #{roleId}
+			</if>
+			<if test="menuId!=null">
+				AND menuId = #{menuId}
+			</if>
+			<if test="id!=null">
+         		<![CDATA[ id =id ]]>
+			</if>
+		</where>
+	</sql>
+	
+</mapper>

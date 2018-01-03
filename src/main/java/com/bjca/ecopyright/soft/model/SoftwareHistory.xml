@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SoftwareHistory">
+	<resultMap id="result" type="SoftwareHistory">
+		<result property="certificatedate" column="certificatedate" />
+		<result property="salesman" column="salesman" />
+		<result property="id" column="id" />
+		<result property="softwarestatus" column="softwarestatus" />
+		<result property="isexist" column="isexist" />
+		<result property="acceptdate" column="acceptdate" />
+		<result property="description" column="description" />
+		<result property="softwarename" column="softwarename" />
+		<result property="applyperson" column="applyperson" />
+		<result property="serialnum" column="serialnum" />
+		<result property="createdate" column="createdate" />
+		<result property="auditdate" column="auditdate" />
+		<result property="updatedate" column="updatedate" />
+		<result property="adminid" column="adminid" />
+		<result property="temphouseorder" column="temphouseorder" />
+		<result property="matchsign" column="matchsign" />
+		<result property="trialId" column="trialId" />
+		<result property="centeracceptdate" column="centeracceptdate" />
+		<result property="checkindate" column="checkindate" />
+		<association property="admin" column="adminid" select="Admin.selectByAdminId"></association>
+		<association property="trialAdmin" column="trialId" select="Admin.selectByAdminId"></association>
+	</resultMap>
+	<insert id="insertSoftwareHistory" keyProperty="id" parameterType="com.bjca.ecopyright.soft.model.SoftwareHistory">
+		insert into softwarehistory
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="certificatedate != null">
+				certificatedate,			
+			</if>
+			<if test="salesman != null">
+				salesman,			
+			</if>
+			<if test="id != null">
+				id,			
+			</if>
+			<if test="softwarestatus != null">
+				softwarestatus,			
+			</if>
+			<if test="isexist != null">
+				isexist,			
+			</if>
+			<if test="acceptdate != null">
+				acceptdate,			
+			</if>
+			<if test="description != null">
+				description,			
+			</if>
+			<if test="softwarename != null">
+				softwarename,			
+			</if>
+			<if test="applyperson != null">
+				applyperson,			
+			</if>
+			<if test="serialnum != null">
+				serialnum,			
+			</if>
+			<if test="createdate != null">
+				createdate,			
+			</if>
+			<if test="updatedate != null">
+				updatedate,			
+			</if>
+			<if test="adminid != null">
+				adminid,			
+			</if>
+			<if test="temphouseorder != null">
+				temphouseorder,			
+			</if>
+			<if test="matchsign != null">
+				matchsign,			
+			</if>
+			<if test="trialId != null">
+				trialId	,		
+			</if>
+			<if test="centeracceptdate != null">
+				centeracceptdate,
+			</if>
+			<if test="auditdate != null">
+				auditdate,
+			</if>
+			<if test="checkindate != null">
+				checkindate
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="certificatedate != null">
+				#{certificatedate},			
+			</if>
+			<if test="salesman != null">
+				#{salesman},			
+			</if>
+			<if test="id != null">
+				#{id},			
+			</if>
+			<if test="softwarestatus != null">
+				#{softwarestatus},			
+			</if>
+			<if test="isexist != null">
+				#{isexist},			
+			</if>
+			<if test="acceptdate != null">
+				#{acceptdate},			
+			</if>
+			<if test="description != null">
+				#{description},			
+			</if>
+			<if test="softwarename != null">
+				#{softwarename},			
+			</if>
+			<if test="applyperson != null">
+				#{applyperson},			
+			</if>
+			<if test="serialnum != null">
+				#{serialnum},			
+			</if>
+			<if test="createdate != null">
+				#{createdate},			
+			</if>
+			<if test="updatedate != null">
+				#{updatedate},			
+			</if>
+			<if test="adminid != null">
+				#{adminid},			
+			</if>
+			<if test="temphouseorder != null">
+				#{temphouseorder},			
+			</if>
+			<if test="matchsign != null">
+				#{matchsign},			
+			</if>
+			<if test="trialId != null">
+				#{trialId},			
+			</if>
+			<if test="centeracceptdate != null">
+				#{centeracceptdate},
+			</if>
+			<if test="auditdate != null">
+				#{auditdate},
+			</if>
+			<if test="checkindate != null">
+				#{checkindate}
+			</if>
+		</trim>
+	</insert>
+
+	<update id="updateSoftwareHistory" parameterType="com.bjca.ecopyright.soft.model.SoftwareHistory">
+		update softwarehistory
+		<set>
+			<if test="certificatedate != null">
+				certificatedate = #{certificatedate},			</if>
+			<if test="salesman != null">
+				salesman = #{salesman},			</if>
+			<if test="acceptdate != null">
+				acceptdate = #{acceptdate},			</if>
+			<if test="description != null">
+				description = #{description},			</if>
+			<if test="softwarename != null">
+				softwarename = #{softwarename},			</if>
+			<if test="applyperson != null">
+				applyperson = #{applyperson},			</if>
+			<if test="serialnum != null">
+				serialnum = #{serialnum},			</if>
+			<if test="createdate != null">
+				createdate = #{createdate},			</if>
+			<if test="updatedate != null">
+				updatedate = #{updatedate},			</if>
+			<if test="adminid != null">
+				adminid = #{adminid},			</if>
+			<if test="softwarestatus != null">
+				softwarestatus = #{softwarestatus},			</if>
+			<if test="isexist != null">
+				isexist = #{isexist},			</if>
+			<if test="temphouseorder != null">
+				temphouseorder = #{temphouseorder},			</if>
+			<if test="matchsign != null">
+				matchsign = #{matchsign},			</if>
+			<if test="trialId != null">
+				trialId = #{trialId},			</if>
+			<if test="centeracceptdate != null">
+				centeracceptdate = #{centeracceptdate},		</if>
+			<if test="auditdate != null">
+				auditdate = #{auditdate},			</if>
+			<if test="checkindate != null">
+				checkindate = #{checkindate}			</if>
+		</set>
+			where id=#{id}
+	</update>
+	<delete id="deleteSoftwareHistory">
+		delete from softwarehistory where id=#{id}
+	</delete>
+
+	<select id="selectSoftwareHistory" resultMap="result">
+		select * from softwarehistory where id=#{id}
+    </select>
+    
+    <select id="querySoftwareHistory" resultType="java.util.List" resultMap="result">
+		select * from softwarehistory 
+		<include refid="Query_Where_Clause" />
+    </select>
+    
+    
+    <select id="querySoftwareHistoryList" resultType="java.util.List" resultMap="result">
+		select * from softwarehistory c
+		<where>
+			<if test="true">
+				1 = 1
+			</if>
+			<if test="serialnum != null">
+				and c.serialnum like '%${serialnum}%'
+			</if>
+			<if test="adminid != null">
+				and c.adminid = #{adminid}
+			</if>
+			<if test="softwarestatus != null">
+				and c.softwarestatus = #{softwarestatus}
+			</if>
+			<if test="certificatedate != null ">
+				and certificatedate = #{certificatedate}
+			</if>
+			<if test="certificatedate1 != null and certificatedate2 !=null">
+				and c.certificatedate <![CDATA[  >=  ]]> '${certificatedate1}' and  c.certificatedate<![CDATA[   <=  ]]>'${certificatedate2}'
+			</if>
+			order by c.certificatedate
+		</where>
+    </select>
+    
+    <select id="countSoftwareHistoryList" resultType="int">
+		select count(1) from softwarehistory c
+		<where>
+			<if test="true">
+				1 = 1
+			</if>
+			<if test="serialnum != null">
+				and c.serialnum like '%${serialnum}%'
+			</if>
+			<if test="adminid != null">
+				and c.adminid = #{adminid}
+			</if>
+			<if test="softwarestatus != null">
+				and c.softwarestatus = #{softwarestatus}
+			</if>
+			<if test="certificatedate != null ">
+				and certificatedate = #{certificatedate}
+			</if>
+			<if test="certificatedate1 != null and certificatedate2 !=null">
+				and c.certificatedate <![CDATA[  >=  ]]> '${certificatedate1}' and  c.certificatedate<![CDATA[   <=  ]]>'${certificatedate2}'
+			</if>
+			order by c.certificatedate
+		</where>
+    </select>
+
+	<select id="countSoftwareHistory" resultType="int" parameterType="java.util.Map">
+		select count(*) from softwarehistory 
+		<include refid="Query_Where_Clause" />
+   </select>
+    
+	<sql id="Query_Where_Clause">
+		<where>
+			<if test="true">
+				1 = 1
+			</if>
+			<if test="id!=null">
+         		<![CDATA[ id =id ]]>
+			</if>
+		</where>
+	</sql>
+	
+</mapper>

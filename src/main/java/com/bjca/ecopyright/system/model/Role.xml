@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Role">
+	<resultMap id="result" type="Role">
+		<result property="id" column="id" />
+		<result property="description" column="description" />
+		<result property="name" column="name" />
+		<result property="sort" column="sort" />
+		<result property="createdate" column="createdate" />
+		<result property="updatedate" column="updatedate" />
+		<association property="roleMenus" column="id" select="RoleMenu.selectRoleMenusByRoleId"></association>
+	</resultMap>
+	<insert id="insertRole" keyProperty="id" parameterType="com.bjca.ecopyright.system.model.Role">
+		insert into role
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,			
+			</if>
+			<if test="description != null">
+				description,			
+			</if>
+			<if test="name != null">
+				name,			
+			</if>
+			<if test="createdate != null">
+				createdate,			
+			</if>
+			<if test="updatedate != null">
+				updatedate,
+			</if>
+			<if test="sort != null">
+				sort			
+			</if>
+		</trim>	
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id},			
+			</if>
+			<if test="description != null">
+				#{description},			
+			</if>
+			<if test="name != null">
+				#{name},			
+			</if>
+			<if test="createdate != null">
+				#{createdate},			
+			</if>
+			<if test="updatedate != null">
+				#{updatedate},
+			</if>
+			<if test="sort != null">
+				#{sort}			
+			</if>
+		</trim>	
+	</insert>
+
+	<update id="updateRole" parameterType="com.bjca.ecopyright.system.model.Role">
+		update role
+		<set>
+			<if test="description != null">
+				description = #{description},			</if>
+			<if test="name != null">
+				name = #{name},			</if>
+			<if test="createdate != null">
+				createdate = #{createdate},			</if>
+			<if test="updatedate != null">
+				updatedate = #{updatedate},			</if>
+			<if test="sort != null">
+				sort = #{sort}			</if>
+		</set>
+			where id=#{id}
+	</update>
+	<delete id="deleteRole">
+		delete from role where id=#{id}
+	</delete>
+
+	<select id="selectRole" resultMap="result">
+		select * from role where id=#{id}
+    </select>
+    
+    <select id="queryRole" resultType="java.util.List" resultMap="result">
+		select * from role 
+		<include refid="Query_Where_Clause" />
+    </select>
+
+	<select id="queryListRole" resultType="java.util.List" resultMap="result">
+		select * from role
+		<include refid="Query_Where_Clause" />
+	</select>
+
+	<select id="countRole" resultType="int" parameterType="java.util.Map">
+		select count(*) from role 
+		<include refid="Query_Where_Clause" />
+   </select>
+
+	<sql id="Query_Where_Clause">
+		<where>
+			<if test="true">
+				1 = 1
+			</if>
+			<if test="id!=null">
+         		<![CDATA[ id =id ]]>
+			</if>
+		</where>
+	</sql>
+	
+</mapper>

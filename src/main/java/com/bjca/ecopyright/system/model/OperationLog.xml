@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="OperationLog">
+	<resultMap id="result" type="OperationLog">
+		<result property="id" column="id" />
+		<result property="execSql" column="execSql" />
+		<result property="execParameter" column="execParameter" />
+		<result property="execTable" column="execTable" />
+		<result property="type" column="type" />
+		<result property="operationTime" column="operationTime" />
+		<result property="adminId" column="adminId" />
+		<association property="admin" column="adminId" select="Admin.selectAdmin"></association>
+	</resultMap>
+	<insert id="insertOperationLog" keyProperty="id" parameterType="com.bjca.ecopyright.system.model.OperationLog">
+		insert into sys_operationlog
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,			
+			</if>
+			<if test="execSql != null">
+				execSql,			
+			</if>
+			<if test="execParameter != null">
+				execParameter,			
+			</if>
+			<if test="execTable != null">
+				execTable,			
+			</if>
+			<if test="type != null">
+				type,			
+			</if>
+			<if test="operationTime != null">
+				operationTime,			
+			</if>
+			<if test="adminId != null">
+				adminId		
+			</if>
+			
+		</trim>	
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id},			
+			</if>
+			<if test="execSql != null">
+				#{execSql},			
+			</if>
+			<if test="execParameter != null">
+				#{execParameter},			
+			</if>
+			<if test="execTable != null">
+				#{execTable},			
+			</if>
+			<if test="type != null">
+				#{type},			
+			</if>
+			<if test="operationTime != null">
+				#{operationTime},			
+			</if>
+			<if test="adminId != null">
+				#{adminId}			
+			</if>
+		</trim>	
+	</insert>
+
+	<update id="updateOperationLog" parameterType="com.bjca.ecopyright.system.model.OperationLog">
+		update sys_operationlog
+		<set>
+			<if test="execSql != null">
+				execSql = #{execSql},		
+			</if>
+			<if test="execParameter != null">
+				execParameter = #{execParameter},		
+			</if>
+			<if test="execTable != null">
+				execTable = #{execTable},		
+			</if>
+			<if test="type != null">
+				type = #{type},		
+			</if>
+			<if test="operationTime != null">
+				operationTime = #{operationTime},		
+			</if>
+			<if test="adminId != null">
+				adminId = #{adminId}		
+			</if>
+		</set>
+			where id=#{id}
+	</update>
+	<delete id="deleteOperationLog">
+		delete from sys_operationlog where id=#{id}
+	</delete>
+
+	<select id="selectOperationLog" resultMap="result">
+		select * from sys_operationlog where id=#{id}
+    </select>
+    
+    <select id="queryOperationLog" resultType="java.util.List" resultMap="result">
+		select * from sys_operationlog 
+		<include refid="Query_Where_Clause" />
+    </select>
+
+	<select id="countOperationLog" resultType="int" parameterType="java.util.Map">
+		select count(*) from sys_operationlog 
+		<include refid="Query_Where_Clause" />
+   </select>
+    
+	<sql id="Query_Where_Clause">
+		<where>
+			<if test="true">
+				1 = 1
+			</if>
+			<if test="id!=null">
+         		<![CDATA[ id =id ]]>
+			</if>
+		</where>
+		order by operationTime desc
+	</sql>
+	
+</mapper>

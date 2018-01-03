@@ -1,0 +1,67 @@
+--------------------------------------
+* rapid-validation v1.5.1
+--------------------------------------
+修正同行显示在没有effects.js时又会转行
+
+--------------------------------------
+* rapid-validation v1.5.0
+--------------------------------------
+主要:
+	框架不依赖与prototype及jquery
+	增加onReset:true以便reset事件自动绑定
+	解決_dependsTest中重複測試的問題
+
+显示风格
+	增加 同行显示错误消息的效果
+	增加 javaeye的 tooltip 显示效果
+
+New Validator
+	* great-than-equal : 大于等于
+	* less-than-equal : 小于等于
+
+
+--------------------------------------
+* rapid-validation v1.0
+--------------------------------------
+ 
+ General
+ * validator重命名(以下重命名与以前版本保持兼容):
+ 	validate-int-range ==> int-range
+ 	validate-float-range ==> float-range
+ 	validate-length-range ==> length-range
+ 	validate-equals ==> equals
+ 
+ New Validator
+ * validate-id-number,验证身份证号码
+ * validate-zip : 验证邮政编码
+ * validate-qq : 验证QQ号码
+ * validate-dwr : 对dwr提供支持
+ * validate-buffalo : 与buffalo集成
+ * validate-selection: : 用于下拉列表框验证
+  
+ * 实现国际化
+ * 删除equals中的IsEmpty判断,容易使用户产生混淆
+ * 修改getArgumentsByClassName()增加返回一个参数singleArgument,例:validate-pattern-/[a-c]/gi,singleArgument值为/[a-c]/gi
+ * rename Validation.validate() to Validation.validateElement()
+ * 在validator中的options中增加ignoreEmptyValue(default=true)属性,避免IsEmpty需要重复判断
+ * 如果增加的是正则表达式的验证将极其简单,例如增加一个QQ验证: ['validate-qq',/^[1-9]\d{4,8}$/]
+ * 删除validate-date-cn与validate-date-au,使用validate-date代替
+ * 通过required-validate class自动绑定的form增加focusFirstElement()
+ * 增加ValidationUtils.fireSubmit()方法,用于模拟产生submit事件 (http://ajaxcn.org/space/start/2006-05-15/2 )
+ * 升级prototype.js至1.5版本,并修正与之的兼容问题
+ 
+ validate-date修改
+ * validate-date现在支持validate-date-$dateFormat自定义日期格式,例如validate-date-yyyy年MM月dd日,默认的日期格式为yyyy-MM-dd
+ 
+ validate-ajax修改
+ * 修改validate-ajax为validate-ajax-$validateUrl,删除需要validateUrl的依赖,例: validate-ajax-http://localhost:8080/validate-email.jsp
+ * validate-ajax现在使用非异步的get请求
+ * validate-ajax中增加传递参数what与value,如<input name="username" value="badqiu"/>,what为username,value为badqiu:
+ * validate-ajax显示的错误信息直接由服务器端返回,返回空字符串则为验证通过
+ 
+ validate-pattern修改
+ * 现在支持非运算符，如： validate-pattern-!/^\d$/
+
+ validate-integer修改
+ * 现在00为非法的整数
+ 

@@ -1,0 +1,135 @@
+A:visited {	COLOR: #7b7b7b; TEXT-DECORATION: none}
+A:link {COLOR: #3a3a3a; TEXT-DECORATION: none}
+A:hover {COLOR: #003399; TEXT-DECORATION: underline}
+A:active {	COLOR: #003399; TEXT-DECORATION: none}
+A.Title:visited {COLOR: #bf5100; TEXT-DECORATION: none}
+A.Title:link {COLOR: #bf5100; TEXT-DECORATION: none}
+A.Title:hover {	COLOR: #bf5100; TEXT-DECORATION: none}
+A.Title:active {COLOR: #003399; TEXT-DECORATION: none}
+TD {FONT-SIZE: 9pt; FONT-FAMILY: Arial,宋体，Times New Roman; TEXT-DECORATION: none}
+TH {
+	FONT-SIZE: 9pt; FONT-FAMILY: Arial,宋体，Times New Roman; TEXT-DECORATION: none
+}
+.HR {
+	OVERFLOW: hidden; COLOR: #eaeaea; HEIGHT: 1px
+}
+.inputrequest {
+	BORDER-RIGHT: #000000 1px solid; BORDER-TOP: #000000 1px solid; FONT-SIZE: 9pt; VERTICAL-ALIGN: middle; BORDER-LEFT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; FONT-FAMILY: "宋体"; BACKGROUND-COLOR: #ffffff
+}
+.inputnotrequest {
+	BORDER-RIGHT: #13215e 1px solid; BORDER-TOP: #13215e 1px solid; FONT-SIZE: 9pt; VERTICAL-ALIGN: middle; BORDER-LEFT: #13215e 1px solid; BORDER-BOTTOM: #13215e 1px solid; FONT-FAMILY: "宋体"; BACKGROUND-COLOR: #feeade
+}
+.input {
+	BORDER-RIGHT: #cccccc 1px groove; BORDER-TOP: #cccccc 1px groove; FONT-SIZE: 9pt; BORDER-LEFT: #cccccc 1px groove; COLOR: #000000; BORDER-BOTTOM: #cccccc 1px groove; FONT-FAMILY: "宋体"; BACKGROUND-COLOR: #f5f5f5; FONT-COLOR: "#000000"
+}
+.inputdown {
+	BORDER-RIGHT: #ffffff 0px groove; BORDER-TOP: #ffffff 0px groove; FONT-SIZE: 9pt; BORDER-LEFT: #ffffff 0px groove; COLOR: #000000; BORDER-BOTTOM: #cccccc 1px groove; FONT-FAMILY: "宋体"; BACKGROUND-COLOR: #ffffff; FONT-COLOR: "#000000"
+}
+.inputno {
+	BORDER-RIGHT: #ffffff 0px groove; BORDER-TOP: #ffffff 0px groove; FONT-SIZE: 9pt; BORDER-LEFT: #ffffff 0px groove; COLOR: #000000; BORDER-BOTTOM: #000000 0px groove; FONT-FAMILY: "宋体"; BACKGROUND-COLOR: #e8e8e8; FONT-COLOR: "#000000"
+}
+.TextArea {
+	BORDER-RIGHT: #cccccc 1px groove; BORDER-TOP: #cccccc 1px groove; OVERFLOW-Y: scroll; FONT-SIZE: 9pt; OVERFLOW-X: scroll; OVERFLOW: scroll; BORDER-LEFT: #cccccc 1px groove; COLOR: #000000; BORDER-BOTTOM: #cccccc 1px groove; FONT-FAMILY: "宋体"; BACKGROUND-COLOR: #f5f5f5; FONT-COLOR: "#000000"
+}
+.button {
+	BORDER-RIGHT: #333333 1px solid; BORDER-TOP: #ffffff 1px solid; FONT-WEIGHT: normal; FONT-SIZE: 9pt; BACKGROUND: #e3e3e3; BORDER-LEFT: #ffffff 1px solid; COLOR: #404040; BORDER-BOTTOM: #333333 1px solid; FONT-FAMILY: "Verdana", "Arial", "Helvetica", "sans-serif"; HEIGHT: 20px
+}
+BODY {
+	BORDER-RIGHT: #000000 0px outset; MARGIN-TOP: 0px; SCROLLBAR-FACE-COLOR: #dddddd; FONT-SIZE: 9pt; SCROLLBAR-HIGHLIGHT-COLOR: #ffffff; MARGIN-LEFT: 0px; SCROLLBAR-SHADOW-COLOR: #cccccc; COLOR: #000000; SCROLLBAR-3DLIGHT-COLOR: #848484; LINE-HEIGHT: 14px; SCROLLBAR-ARROW-COLOR: #ffffff; SCROLLBAR-DARKSHADOW-COLOR: #848484; BACKGROUND-COLOR: #ffffff; TEXT-DECORATION: none
+}
+.admin_left_menu {FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #ffffff; TEXT-DECORATION: none}
+.Title {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #ffffff; TEXT-DECORATION: none
+}
+.TableTitle {
+	BACKGROUND-COLOR: #eaeaea; TEXT-ALIGN: center
+}
+.TableContent {
+	BACKGROUND-COLOR: #ffffff; TEXT-ALIGN: center
+}
+.Nav {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #bf5100; BORDER-BOTTOM: #eaeaea 1px solid; TEXT-DECORATION: none
+}
+.Nav2 {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #C0C0C0; BORDER-BOTTOM: #eaeaea 1px solid; TEXT-DECORATION: none
+}
+.NavTitle {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #bf5100; BORDER-BOTTOM: #eaeaea 1px solid; TEXT-DECORATION: none
+}
+.BorderBottom {
+	BORDER-BOTTOM: #eaeaea 1px solid
+}
+.DotBorderBottom {
+	BORDER-BOTTOM: #eaeaea 1px dashed
+}
+H1 {
+	PADDING-RIGHT: 3px; PADDING-LEFT: 3px; FONT-WEIGHT: bold; FONT-SIZE: 9pt; PADDING-BOTTOM: 3px; WIDTH: 100%; PADDING-TOP: 3px; BORDER-BOTTOM: #cccccc 1px solid; BACKGROUND-COLOR: #ffffff
+}
+.group {
+	BORDER-RIGHT: #cccccc 1px dashed; PADDING-RIGHT: 5px; BORDER-TOP: #cccccc 1px dashed; PADDING-LEFT: 5px; PADDING-BOTTOM: 5px; MARGIN: 10px 0px 15px; BORDER-LEFT: #cccccc 1px dashed; PADDING-TOP: 10px; BORDER-BOTTOM: #cccccc 1px dashed; POSITION: relative
+}
+.group H4 {
+	BORDER-TOP-WIDTH: 0px; PADDING-RIGHT: 4px; PADDING-LEFT: 2px; BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 100%; BACKGROUND: #ffffff; BORDER-BOTTOM-WIDTH: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; COLOR: #333333; PADDING-TOP: 0px; WHITE-SPACE: nowrap; POSITION: absolute; TOP: -5px; BORDER-RIGHT-WIDTH: 0px
+}
+.group H6 {
+	BORDER-TOP-WIDTH: 0px; PADDING-RIGHT: 4px; PADDING-LEFT: 2px; BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 100%; BACKGROUND: #ffffff; LEFT: 86%; BORDER-BOTTOM-WIDTH: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; COLOR: #990000; PADDING-TOP: 0px; WHITE-SPACE: nowrap; POSITION: absolute; TOP: -5px; BORDER-RIGHT-WIDTH: 0px
+}
+.group H5 {
+	PADDING-RIGHT: 4px; PADDING-LEFT: 2px; FONT-SIZE: 100%; PADDING-BOTTOM: 0px; MARGIN: 0px; COLOR: #666666; PADDING-TOP: 0px
+}
+.group TD {
+	FONT-SIZE: 8pt; LINE-HEIGHT: 21px
+}
+.group UL {
+	PADDING-RIGHT: 2px; PADDING-LEFT: 2px; PADDING-BOTTOM: 2px; MARGIN: 0px; PADDING-TOP: 2px
+}
+.group LI {
+	DISPLAY: inline; MARGIN: 0px; LIST-STYLE-TYPE: none
+}
+.borderdotTop {
+	BORDER-TOP: #eaeaea 1px dashed
+}
+.bordertop {
+	BORDER-TOP: #cccccc 1px solid
+}
+.borderbottom {
+	BORDER-BOTTOM: #cccccc 1px solid
+}
+.borderlbr {
+	BORDER-RIGHT: #eaeaea 1px solid; BORDER-LEFT: #eaeaea 1px solid; BORDER-BOTTOM: #eaeaea 1px solid
+}
+.borderleft {
+	BORDER-LEFT: #cccccc 1px solid
+}
+.borderright {
+	BORDER-RIGHT: #cccccc 1px solid
+}
+#containerul {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; TEXT-ALIGN: left
+}
+#containerul UL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; TEXT-ALIGN: left
+}
+#containerul LI {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px 30px; PADDING-TOP: 0px; LIST-STYLE-TYPE: none
+}
+#containerul .symbols {
+	BACKGROUND-POSITION: 0px 50%; FLOAT: left; WIDTH: 12px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 1em
+}
+.CatTree {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #bf5100; TEXT-DECORATION: none
+}
+.Msg {BORDER-RIGHT: #bf5100 1px dashed; PADDING-RIGHT: 5px; BORDER-TOP: #bf5100 1px dashed; PADDING-LEFT: 20px; FONT-WEIGHT: bold; BACKGROUND: url(../images/!.gif) no-repeat left 50%; MARGIN-LEFT: 5px; BORDER-LEFT: #bf5100 1px dashed; MARGIN-RIGHT: 5px; BORDER-BOTTOM: #bf5100 1px dashed; HEIGHT: 20px
+}
+LABEL.error {
+	BORDER-RIGHT: #bf5100 1px dashed; PADDING-RIGHT: 5px; BORDER-TOP: #bf5100 1px dashed; PADDING-LEFT: 20px; FONT-WEIGHT: bold; BACKGROUND: url(../images/!.gif) no-repeat left 50%; MARGIN-LEFT: 5px; BORDER-LEFT: #bf5100 1px dashed; MARGIN-RIGHT: 5px; BORDER-BOTTOM: #bf5100 1px dashed; HEIGHT: 20px
+}
+.checkbox {
+	BORDER-RIGHT: 0px; BORDER-TOP: 0px; BORDER-LEFT: 0px; BORDER-BOTTOM: 0px
+}
+INPUT {
+	BORDER-RIGHT: #cccccc 1px solid; BORDER-TOP: #cccccc 1px solid; BORDER-LEFT: #cccccc 1px solid; BORDER-BOTTOM: #cccccc 1px solid
+}
+INPUT.error {
+	BORDER-RIGHT: #bf5100 1px solid; BORDER-TOP: #bf5100 1px solid; BORDER-LEFT: #bf5100 1px solid; BORDER-BOTTOM: #bf5100 1px solid
+}

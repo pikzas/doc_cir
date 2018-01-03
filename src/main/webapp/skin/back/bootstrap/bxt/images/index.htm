@@ -1,0 +1,42 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0054)http://test1.beijing-marathon.com/system/admin/index.h -->
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>frame</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=utf-8"><LINK 
+href="index.files/front.css" type=text/css rel=stylesheet><LINK 
+href="index.files/admin.css" type=text/css rel=stylesheet><LINK 
+href="index.files/theme.css" type=text/css rel=stylesheet>
+<SCRIPT>
+    function switchSysBar() {
+        var door = document.getElementById("door").value;
+        if (door == "open"){
+            document.getElementById("door").value = "colse";
+            document.all("img1").src = "/skin/images/main_55_1.gif";
+            document.all("frmTitle").style.display = "none"
+        }else{
+            document.getElementById("door").value = "open";
+            document.all("img1").src = "/skin/images/main_55.gif";
+            document.all("frmTitle").style.display = "block"
+        }
+    }
+</SCRIPT>
+
+<META content="MSHTML 6.00.2900.6082" name=GENERATOR></HEAD>
+<BODY style="OVERFLOW: hidden">
+<TABLE style="TABLE-LAYOUT: fixed" height="100%" cellSpacing=0 cellPadding=0 
+width="100%" border=0><INPUT id=door type=hidden value=open name=door> 
+  <TBODY>
+  <TR>
+    <TD id=frmTitle vAlign=top noWrap align=middle width=165 
+      name="fmTitle"><IFRAME border=0 name=_left src="index.files/left.htm" 
+      frameBorder=0 width="100%" scrolling=no 
+      height="100%">
+                浏览器不支持嵌入式框架，或被配置为不显示嵌入式框架。
+            </IFRAME></TD>
+    <TD title=关闭/打开左栏 style="WIDTH: 6px; CURSOR: hand" onclick=switchSysBar() 
+    vAlign=center width=6 bgColor=#1873aa><IMG id=img1 height=40 
+      src="index.files/main_55.gif" width=6 name=img1></TD>
+    <TD vAlign=top align=middle width="100%"><IFRAME border=0 name=_right 
+      src="index.files/siteList.htm" frameBorder=0 width="100%" 
+      height="100%">
+                浏览器不支持嵌入式框架，或被配置为不显示嵌入式框架。
+            </IFRAME></TD></TR></TBODY></TABLE></BODY></HTML>

@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Admin">
+	<resultMap id="result" type="Admin">
+		<result property="ID" column="ID" />
+		<result property="loginName" column="loginName" />
+		<result property="password" column="password" />
+		<result property="email" column="email" />
+		<result property="phone" column="phone" />
+		<result property="relName" column="relName" />
+		<result property="state" column="state" />
+		<result property="roleId" column="roleId" />
+		<result property="type" column="type" />
+		<result property="authorizationcode" column="authorizationcode" />
+		<collection property="userRoleList" column="{adminId=id}" ofType="java.uitl.List" select="UserRole.queryUserRole"></collection>
+	</resultMap>
+	<insert id="insertAdmin" keyProperty="id" parameterType="com.bjca.ecopyright.system.model.Admin">
+		insert into admin
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="ID != null">
+				ID,			
+			</if>
+			<if test="loginName != null">
+				loginName,			
+			</if>
+			<if test="password != null">
+				password,			
+			</if>
+			<if test="email != null">
+				email,			
+			</if>
+			<if test="phone != null">
+				phone,			
+			</if>
+			<if test="relName != null">
+				relName,			
+			</if>
+			<if test="state != null">
+				state,			
+			</if>
+			<if test="roleId != null">
+				roleId,			
+			</if>
+			<if test="type != null">
+				type,			
+			</if>
+			<if test="authorizationcode != null">
+				authorizationcode			
+			</if>
+		</trim>	
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="ID != null">
+				#{ID},			
+			</if>
+			<if test="loginName != null">
+				#{loginName},			
+			</if>
+			<if test="password != null">
+				#{password},			
+			</if>
+			<if test="email != null">
+				#{email},			
+			</if>
+			<if test="phone != null">
+				#{phone},			
+			</if>
+			<if test="relName != null">
+				#{relName},			
+			</if>
+			<if test="state != null">
+				#{state},			
+			</if>
+			<if test="roleId != null">
+				#{roleId},			
+			</if>
+			<if test="type != null">
+				#{type},			
+			</if>
+			<if test="authorizationcode != null">
+				#{authorizationcode}			
+			</if>
+		</trim>	
+	</insert>
+
+	<update id="updateAdmin" parameterType="com.bjca.ecopyright.system.model.Admin">
+		update admin
+		<set>
+			<if test="loginName != null">
+				loginName = #{loginName},		
+			</if>
+			<if test="password != null">
+				password = #{password},		
+			</if>
+			<if test="email != null">
+				email = #{email},		
+			</if>
+			<if test="phone != null">
+				phone = #{phone},		
+			</if>
+			<if test="relName != null">
+				relName = #{relName},		
+			</if>
+			<if test="state != null">
+				state = #{state},		
+			</if>
+			<if test="roleId != null">
+				roleId = #{roleId},		
+			</if>
+			<if test="type != null">
+				type = #{type},		
+			</if>
+			<if test="authorizationcode != null">
+				authorizationcode = #{authorizationcode}		
+			</if>
+		</set>
+			where id=#{ID}
+	</update>
+	<delete id="deleteAdmin">
+		delete from admin where id=#{ID}
+	</delete>
+
+	<select id="selectAdmin" resultMap="result">
+		select * from admin where id=#{ID}
+    </select>
+     <!--  根据案件adminid查询 -->
+    <select id="selectByAdminId" resultMap="result">
+		select * from admin where id=#{adminid}
+    </select>
+       <select id="queryAdminByParam" resultType="java.util.List" resultMap="result">
+		select *
+		<include refid="Query_Where_Clause" />
+   </select>
+	<select id="queryAllAdmins" resultType="java.util.List" resultMap="result">
+		select * from admin
+    </select>
+    
+    <select id="queryAdmin" resultType="java.util.List" resultMap="result">
+		select *
+		<include refid="Query_Where_Clause" />
+    </select>
+    <select id="queryAdminByRole" resultType="java.util.List" resultMap="result">
+		select * from admin where roleId = #{roleId}
+    </select>
+    <select id="queryAdminByRoleName" resultType="java.util.List" resultMap="result">
+		SELECT
+		*
+		FROM
+		admin
+		LEFT JOIN sys_userrole su ON admin.iD = su.adminId
+		LEFT JOIN role on su.roleId = role.id
+		where role.name = '${roleName}'
+		<if test="state != null">
+			and state = #{state}
+		</if>
+    </select>
+
+	<select id="countAdmin" resultType="int" parameterType="java.util.Map">
+		select count(*)
+		<include refid="Query_Where_Clause" />
+   </select>
+    
+	<sql id="Query_Where_Clause">
+		<if test="roleId !=null">
+			from admin ,sys_userrole , role
+		</if>
+		<if test="roleId ==null">
+			from admin
+		</if>
+		<where>
+			<if test="true">
+				1 = 1
+			</if>
+			<if test="roleId != null">
+				and admin.iD = sys_userrole.adminId
+				and role.id = sys_userrole.roleId
+				and	role.id = #{roleId}
+			</if>
+			<if test="loginName != null">
+				and loginName like '%${loginName}%'
+			</if>
+			<if test="relName != null">
+				and relName like '%${relName}%'
+			</if>
+			<if test="state != null">
+				and state = #{state}
+			</if>
+			<if test="phone != null">
+				and phone like '%${phone}%'
+			</if>
+			<if test="email != null">
+				and email like '%${email}%'
+			</if>
+			order by loginName
+		</where>
+		
+	</sql>
+	<select id="loginByName" resultMap="result" >
+		select * from admin where loginName=#{value}
+    </select>
+	<select id="searchAdminByType" resultMap="result" >
+		select * from admin where type=#{type}
+    </select>
+    
+</mapper>

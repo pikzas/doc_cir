@@ -1,0 +1,78 @@
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<setting name="cacheEnabled" value="false" />
+		<setting name="lazyLoadingEnabled" value="false" />
+		<setting name="aggressiveLazyLoading" value="false" />
+	</settings>
+	<typeAliases>
+		<!-- system -->
+		<typeAlias alias="Admin" type="com.bjca.ecopyright.system.model.Admin" />
+		<typeAlias alias="OperationLog" type="com.bjca.ecopyright.system.model.OperationLog" />
+		<!-- soft -->
+		<typeAlias alias="Software" type="com.bjca.ecopyright.soft.model.Software" />
+		<typeAlias alias="SoftwareVO" type="com.bjca.ecopyright.soft.model.SoftwareVO" />
+		<typeAlias alias="SoftwareAuditVO" type="com.bjca.ecopyright.soft.model.SoftwareAuditVO" />
+		<!-- warehouse -->
+		<typeAlias alias="Storage" type="com.bjca.ecopyright.warehouse.model.Storage" />
+		<!-- StorageSoftware -->
+		<typeAlias alias="StorageSoftware" type="com.bjca.ecopyright.warehouse.model.StorageSoftware" />
+		<!-- SoftwareHistory -->
+		<typeAlias alias="SoftwareHistory" type="com.bjca.ecopyright.soft.model.SoftwareHistory" />
+		<!-- softwareLog -->
+		<typeAlias alias="SoftwareOperationLog" type="com.bjca.ecopyright.soft.model.SoftwareOperationLog" />
+		<!-- toolcalendar -->
+		<typeAlias alias="ChinaCalendar" type="com.bjca.ecopyright.tools.model.ChinaCalendar" />
+		<!--menu-->
+		<typeAlias alias="Menu" type="com.bjca.ecopyright.system.model.Menu" />
+		<!--role-->
+		<typeAlias alias="Role" type="com.bjca.ecopyright.system.model.Role" />
+		<!--roleMenu-->
+		<typeAlias alias="RoleMenu" type="com.bjca.ecopyright.system.model.RoleMenu" />
+		<!--UserRole-->
+		<typeAlias alias="UserRole" type="com.bjca.ecopyright.system.model.UserRole" />
+
+
+
+
+	</typeAliases>
+	<typeHandlers>
+		<typeHandler handler="com.bjca.framework.page.EmptyToNullTypeHandler" javaType="String" jdbcType="VARCHAR" />
+	</typeHandlers>
+	<plugins>
+		<plugin interceptor="com.bjca.framework.page.DiclectStatementHandlerInterceptor" />
+		<plugin interceptor="com.bjca.framework.page.DiclectResultSetHandlerInterceptor" />
+	</plugins>
+	<mappers>
+		<!-- system -->
+		<mapper resource="com/bjca/ecopyright/system/model/Admin.xml" />
+		<mapper resource="com/bjca/ecopyright/system/model/OperationLog.xml" />
+
+		<!-- soft -->
+		<mapper resource="com/bjca/ecopyright/soft/model/Software.xml" />
+		<!-- SoftwareHistory -->
+		<mapper resource="com/bjca/ecopyright/soft/model/SoftwareHistory.xml" />
+		
+		<!-- warehouse -->
+		<mapper resource="com/bjca/ecopyright/warehouse/model/Storage.xml" />
+		<!-- StorageSoftware -->
+		<mapper resource="com/bjca/ecopyright/warehouse/model/StorageSoftware.xml" />
+		
+		<!-- softwareLog -->
+		<mapper resource="com/bjca/ecopyright/soft/model/SoftwareOperationLog.xml" />
+		<!-- ChinaCalendar -->
+		<mapper resource="com/bjca/ecopyright/tools/model/ChinaCalendar.xml" />
+
+		<!--menu-->
+		<mapper resource="com/bjca/ecopyright/system/model/Menu.xml" />
+		<!--Role-->
+		<mapper resource="com/bjca/ecopyright/system/model/Role.xml" />
+		<!--RoleMenu-->
+		<mapper resource="com/bjca/ecopyright/system/model/RoleMenu.xml" />
+		<!--UserRole-->
+		<mapper resource="com/bjca/ecopyright/system/model/UserRole.xml" />
+
+	</mappers>
+
+
+</configuration>

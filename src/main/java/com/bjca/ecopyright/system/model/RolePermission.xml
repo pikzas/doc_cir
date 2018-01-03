@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="RolePermission">
+	<resultMap id="result" type="RolePermission">
+		<result property="id" column="id" />
+		<result property="permissionid" column="permissionid" />
+		<result property="roleid" column="roleid" />
+		<result property="createdate" column="createdate" />
+		<result property="updatedate" column="updatedate" />
+	</resultMap>
+	<insert id="insertRolePermission" keyProperty="id" parameterType="com.bjca.ecopyright.system.model.RolePermission">
+		insert into role_permission
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,			
+			</if>
+			<if test="permissionid != null">
+				permissionid,			
+			</if>
+			<if test="roleid != null">
+				roleid,			
+			</if>
+			<if test="createdate != null">
+				createdate,			
+			</if>
+			<if test="updatedate != null">
+				updatedate			
+			</if>
+		</trim>	
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id},			
+			</if>
+			<if test="permissionid != null">
+				#{permissionid},			
+			</if>
+			<if test="roleid != null">
+				#{roleid},			
+			</if>
+			<if test="createdate != null">
+				#{createdate},			
+			</if>
+			<if test="updatedate != null">
+				#{updatedate}			
+			</if>
+		</trim>	
+	</insert>
+
+	<update id="updateRolePermission" parameterType="com.bjca.ecopyright.system.model.RolePermission">
+		update role_permission
+		<set>
+			<if test="permissionid != null">
+				permissionid = #{permissionid},			</if>
+			<if test="roleid != null">
+				roleid = #{roleid},			</if>
+			<if test="createdate != null">
+				createdate = #{createdate},			</if>
+			<if test="updatedate != null">
+				updatedate = #{updatedate}			</if>
+		</set>
+			where id=#{id}
+	</update>
+	<delete id="deleteRolePermission">
+		delete from role_permission where id=#{id}
+	</delete>
+
+	<select id="selectRolePermission" resultMap="result">
+		select * from role_permission where id=#{id}
+    </select>
+    
+    <select id="queryRolePermission" resultType="java.util.List" resultMap="result">
+		select * from role_permission 
+		<include refid="Query_Where_Clause" />
+    </select>
+
+	<select id="countRolePermission" resultType="int" parameterType="java.util.Map">
+		select count(*) from role_permission 
+		<include refid="Query_Where_Clause" />
+   </select>
+    
+	<sql id="Query_Where_Clause">
+		<where>
+			<if test="true">
+				1 = 1
+			</if>
+			<if test="id!=null">
+         		<![CDATA[ id =id ]]>
+			</if>
+		</where>
+	</sql>
+	
+</mapper>

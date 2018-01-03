@@ -1,0 +1,660 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Software">
+	<resultMap id="result" type="Software">
+		<result property="certificatedate" column="certificatedate" />
+		<result property="salesman" column="salesman" />
+		<result property="id" column="id" />
+		<result property="acceptdate" column="acceptdate" />
+		<result property="description" column="description" />
+		<result property="softwarename" column="softwarename" />
+		<result property="applyperson" column="applyperson" />
+		<result property="serialnum" column="serialnum" />
+		<result property="createdate" column="createdate" />
+		<result property="updatedate" column="updatedate" />
+		<result property="adminid" column="adminid" />
+		<result property="softwarestatus" column="softwarestatus" />
+		<result property="isexist" column="isexist" />
+		<result property="temphouseorder" column="temphouseorder" />
+		<result property="matchsign" column="matchsign" />
+		<result property="trialId" column="trialId" />
+		<result property="centeracceptdate" column="centeracceptdate" />
+		<result property="auditdate" column="auditdate" />
+		<result property="checkindate" column="checkindate" />
+		<association property="admin" column="adminid" select="Admin.selectByAdminId"></association>
+		<association property="trialAdmin" column="trialId" select="Admin.selectByAdminId"></association>
+		<association property="storage" column="id" select="Storage.findStorageBySoftwareId"></association>
+		<association property="storageSoftware" column="id" select="StorageSoftware.selectBySoftwareId"></association>
+	</resultMap>
+	<resultMap id="result2" type="SoftwareVO">
+		<result property="category" column="category" />
+		<result property="total" column="total" />
+		<result property="color" column="color" />
+	</resultMap>
+	<resultMap id="result3" type="SoftwareAuditVO">
+		<result property="adminID" column="adminID" />
+		<result property="total" column="total" />
+		<result property="type" column="type" />
+	</resultMap>
+
+	<insert id="insertSoftware" keyProperty="id" parameterType="com.bjca.ecopyright.soft.model.Software">
+		insert into software
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="certificatedate != null">
+				certificatedate,			
+			</if>
+			<if test="salesman != null">
+				salesman,			
+			</if>
+			<if test="id != null">
+				id,			
+			</if>
+			<if test="acceptdate != null">
+				acceptdate,			
+			</if>
+			<if test="description != null">
+				description,			
+			</if>
+			<if test="softwarename != null">
+				softwarename,			
+			</if>
+			<if test="applyperson != null">
+				applyperson,			
+			</if>
+			<if test="serialnum != null">
+				serialnum,			
+			</if>
+			<if test="createdate != null">
+				createdate,			
+			</if>
+			<if test="updatedate != null">
+				updatedate,			
+			</if>
+			<if test="adminid != null">
+				adminid	,		
+			</if>
+			<if test="softwarestatus != null">
+				softwarestatus	,		
+			</if>
+			<if test="isexist != null">
+				isexist,			
+			</if>
+			<if test="temphouseorder != null">
+				temphouseorder,			
+			</if>
+			<if test="matchsign != null">
+				matchsign,			
+			</if>
+			<if test="trialId != null">
+				trialId	,		
+			</if>
+			<if test="centeracceptdate != null">
+				centeracceptdate,
+			</if>
+			<if test="auditdate != null">
+				auditdate,
+			</if>
+			<if test="checkindate != null">
+				checkindate
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="certificatedate != null">
+				#{certificatedate},			
+			</if>
+			<if test="salesman != null">
+				#{salesman},			
+			</if>
+			<if test="id != null">
+				#{id},			
+			</if>
+			<if test="acceptdate != null">
+				#{acceptdate},			
+			</if>
+			<if test="description != null">
+				#{description},			
+			</if>
+			<if test="softwarename != null">
+				#{softwarename},			
+			</if>
+			<if test="applyperson != null">
+				#{applyperson},			
+			</if>
+			<if test="serialnum != null">
+				#{serialnum},			
+			</if>
+			<if test="createdate != null">
+				#{createdate},			
+			</if>
+			<if test="updatedate != null">
+				#{updatedate},			
+			</if>
+			<if test="adminid != null">
+				#{adminid},			
+			</if>
+			<if test="softwarestatus != null">
+				#{softwarestatus},			
+			</if>
+			<if test="isexist != null">
+				#{isexist},			
+			</if>
+			<if test="temphouseorder != null">
+				#{temphouseorder},			
+			</if>
+			<if test="matchsign != null">
+				#{matchsign},			
+			</if>
+			<if test="trialId != null">
+				#{trialId},			
+			</if>
+			<if test="centeracceptdate != null">
+				#{centeracceptdate},
+			</if>
+			<if test="auditdate != null">
+				#{auditdate},
+			</if>
+			<if test="checkindate != null">
+				#{checkindate}
+			</if>
+		</trim>
+	</insert>
+
+	<update id="updateSoftware" parameterType="com.bjca.ecopyright.soft.model.Software">
+		update software
+		<set>
+			<if test="certificatedate != null">
+				certificatedate = #{certificatedate},			</if>
+			<if test="salesman != null">
+				salesman = #{salesman},			</if>
+			<if test="acceptdate != null">
+				acceptdate = #{acceptdate},			</if>
+			<if test="description != null">
+				description = #{description},			</if>
+			<if test="softwarename != null">
+				softwarename = #{softwarename},			</if>
+			<if test="applyperson != null">
+				applyperson = #{applyperson},			</if>
+			<if test="serialnum != null">
+				serialnum = #{serialnum},			</if>
+			<if test="createdate != null">
+				createdate = #{createdate},			</if>
+			<if test="updatedate != null">
+				updatedate = #{updatedate},			</if>
+			<if test="adminid != null">
+				adminid = #{adminid},			</if>
+			<if test="softwarestatus != null">
+				softwarestatus = #{softwarestatus},		</if>
+			<if test="isexist != null">
+				isexist = #{isexist},			</if>
+			<if test="temphouseorder != null">
+				temphouseorder = #{temphouseorder},			</if>
+			<if test="matchsign != null">
+				matchsign = #{matchsign},			</if>
+			<if test="trialId != null">
+				trialId = #{trialId},			</if>
+			<if test="centeracceptdate != null">
+				centeracceptdate = #{centeracceptdate},			</if>
+			<if test="auditdate != null">
+				auditdate = #{auditdate},			</if>
+			<if test="checkindate != null">
+				checkindate = #{checkindate}			</if>
+		</set>
+			where id=#{id}
+	</update>
+	<delete id="deleteSoftware">
+		delete from software where id=#{id}
+	</delete>
+
+	<select id="selectSoftware" resultMap="result">
+		select * from software where id=#{id}
+    </select>
+	<select id="selectByserialnum" resultMap="result">
+		select * from software where serialnum=#{serialnum}
+    </select>
+	<select id="selectByStorageId" resultMap="result">
+		select * from software sw where id=(select s_sw.softwareid from storage_software s_sw where s_sw.storageid=#{id})
+    </select>
+    
+    <select id="querySoftware" resultType="java.util.List" resultMap="result">
+		select * from software 
+		<include refid="Query_Where_Clause" />
+    </select>
+	
+    <select id="queryListSoftware" resultType="java.util.List" resultMap="result">
+		select * from software 
+		<include refid="Query_Where_Clause" />
+    </select>
+    <select id="queryWaitAuditSoftware" resultType="java.util.List" resultMap="result">
+		SELECT
+			c.*
+		FROM
+			software c
+		LEFT JOIN storage_software a ON a.softwareid = c.id
+		LEFT JOIN STORAGE b ON b.id = a.storageid
+		WHERE
+			1 = 1
+			AND c.softwarestatus = '2'
+			<if test="startCertificatedate != null">
+			AND c.certificatedate &gt; '${startCertificatedate}'
+			</if>
+			<if test="endCertificatedate != null">
+			AND c.certificatedate &lt; '${endCertificatedate}'
+			</if>
+		ORDER BY
+			b.groupname,b.name
+    </select>
+
+	<select id="countSoftware" resultType="int" parameterType="java.util.Map">
+		select count(*) from software 
+		<include refid="Query_Where_Clause" />
+   </select>
+   <select id="countByCertificatedate" resultType="int">
+		select count(1) from software where certificatedate =#{certificatedate};
+   </select>
+
+	<select id="findSoftwareByStorageId" resultMap="result">
+		SELECT
+			software.certificatedate
+		FROM
+			software
+		WHERE
+			id IN (
+				SELECT
+					ss.softwareid
+				FROM
+					storage_software ss
+				WHERE
+					ss.storageid IN (
+						SELECT
+							id
+						FROM
+							storage
+						WHERE
+							fid = #{storageId}
+					)
+			) limit 1
+	</select>
+
+	<select id="queryStatisticList" resultType="java.util.List" parameterType="java.util.Map" resultMap="result2">
+		SELECT DATE_FORMAT(certificatedate,'%Y-%m-%d') AS category,COUNT(1) AS total FROM software
+		<include refid="Statistic_Query_Where_Clause"/>
+	</select>
+
+
+	<select id="statisticForAudit" resultType="java.util.List" parameterType="java.util.Map" resultMap="result3">
+		SELECT
+			count(*) AS total,
+			trialId AS adminID,
+			3 AS type
+		FROM
+			software
+		<include refid="StatisticAudit_One_Query_Where_Clause"/>
+		UNION
+		SELECT
+			count(*) AS total,
+			trialId AS adminID,
+			softwarestatus AS type
+		FROM
+			software
+		<include refid="StatisticAudit_Two_Query_Where_Clause"/>
+	</select>
+
+ 	<select id="countSoftInfoList" resultType="int">
+		select count(1) from software c
+		left join storage_software a on a.softwareid=c.id
+		left join storage b on b.id=a.storageid
+		<where>
+			<if test="true">
+				1 = 1
+			</if>
+			<if test="serialnum != null">
+				and c.serialnum like '%${serialnum}%'
+			</if>
+			<if test="adminid != null">
+				and c.adminid = #{adminid}
+			</if>
+			<if test="softwarestatus != null">
+				and c.softwarestatus = #{softwarestatus}
+			</if>
+			<if test="certificatedate != null ">
+				and certificatedate = #{certificatedate}
+			</if>
+			<if test="certificatedate1 != null and certificatedate2 !=null">
+				and c.certificatedate <![CDATA[  >=  ]]> '${certificatedate1}' and  c.certificatedate<![CDATA[   <=  ]]>'${certificatedate2}'
+			</if>
+			<if test="nameLevel !=null">
+				and b.fid = '${nameLevel}'
+			</if>
+			order by c.certificatedate
+		</where>
+    </select>
+ 	<select id="countSoftwareAndSfhistory" resultType="int">
+		select count(1) from (select * from software UNION select * from softwarehistory) c
+		left join storage_software a on a.softwareid=c.id
+		left join storage b on b.id=a.storageid
+		<where>
+			<if test="true">
+				1 = 1
+			</if>
+			<if test="serialnum != null">
+				and c.serialnum like '%${serialnum}%'
+			</if>
+			<if test="adminid != null">
+				and c.adminid = #{adminid}
+			</if>
+			<if test="softwarestatus != null">
+				and c.softwarestatus = #{softwarestatus}
+			</if>
+			<if test="certificatedate != null ">
+				and certificatedate = #{certificatedate}
+			</if>
+			<if test="certificatedate1 != null and certificatedate2 !=null">
+				and c.certificatedate <![CDATA[  >=  ]]> '${certificatedate1}' and  c.certificatedate<![CDATA[   <=  ]]>'${certificatedate2}'
+			</if>
+			<if test="nameLevel !=null">
+				and b.fid = '${nameLevel}'
+			</if>
+			order by c.certificatedate
+		</where>
+    </select>
+    
+ 	
+ 
+   <select id="querySoftInfoList" resultType="java.util.List" resultMap="result">
+		select c.*,concat(b.name,'-',b.level)as nameLevel from software c
+		left join storage_software a on a.softwareid=c.id
+		left join storage b on b.id=a.storageid
+		<where>
+			<if test="true">
+				1 = 1
+			</if>
+			<if test="serialnum != null">
+				and c.serialnum like '%${serialnum}%'
+			</if>
+			<if test="adminid != null">
+				and c.adminid = #{adminid}
+			</if>
+			<if test="softwarestatus != null">
+				and c.softwarestatus = #{softwarestatus}
+			</if>
+			<if test="certificatedate != null ">
+				and certificatedate = #{certificatedate}
+			</if>
+			<if test="certificatedate1 != null and certificatedate2 !=null">
+				and c.certificatedate <![CDATA[  >=  ]]> '${certificatedate1}' and  c.certificatedate<![CDATA[   <=  ]]>'${certificatedate2}'
+			</if>
+			<if test="nameLevel !=null">
+				and b.fid = '${nameLevel}'
+			</if>
+			order by c.certificatedate
+		</where>
+    </select>
+    
+    
+   <select id="querySoftwareAndSfhistory" resultType="java.util.List" resultMap="result">
+		select c.*,concat(b.name,'-',b.level)as nameLevel from (select * from software UNION select * from softwarehistory) c
+		left join storage_software a on a.softwareid=c.id
+		left join storage b on b.id=a.storageid
+		<where>
+			<if test="true">
+				1 = 1
+			</if>
+			<if test="serialnum != null">
+				and c.serialnum like '%${serialnum}%'
+			</if>
+			<if test="adminid != null">
+				and c.adminid = #{adminid}
+			</if>
+			<if test="softwarestatus != null">
+				and c.softwarestatus = #{softwarestatus}
+			</if>
+			<if test="certificatedate != null ">
+				and certificatedate = #{certificatedate}
+			</if>
+			<if test="certificatedate1 != null and certificatedate2 !=null">
+				and c.certificatedate <![CDATA[  >=  ]]> '${certificatedate1}' and  c.certificatedate<![CDATA[   <=  ]]>'${certificatedate2}'
+			</if>
+			<if test="nameLevel !=null">
+				and b.fid = '${nameLevel}'
+			</if>
+			order by c.certificatedate
+		</where>
+    </select>
+    
+   <select id="querySoftInfoListParam" resultType="java.util.List" resultMap="result">
+		select c.* from software c
+		left join storage_software a on a.softwareid=c.id
+		left join storage b on b.id=a.storageid
+		<where>
+			<if test="true">
+				1 = 1
+			</if>
+			<if test="serialnum != null">
+				and c.serialnum like '%${serialnum}%'
+			</if>
+			<if test="adminid != null">
+				and c.adminid = #{adminid}
+			</if>
+			<if test="softwarestatus != null">
+				and c.softwarestatus = #{softwarestatus}
+			</if>
+			<if test="certificatedate != null ">
+				and certificatedate = #{certificatedate}
+			</if>
+			<if test="certificatedate1 != null and certificatedate2 !=null">
+				and c.certificatedate <![CDATA[  >=  ]]> '${certificatedate1}' and  c.certificatedate<![CDATA[   <=  ]]>'${certificatedate2}'
+			</if>
+			<if test="nameLevel !=null">
+				and b.fid = '${nameLevel}'
+			</if>
+			order by c.certificatedate
+		</where>
+    </select>
+    
+    
+    <select id="countSoftInfoListParam" resultType="int">
+		select count(1) from software c
+		left join storage_software a on a.softwareid=c.id
+		left join storage b on b.id=a.storageid
+		<where>
+			<if test="true">
+				1 = 1
+			</if>
+			<if test="serialnum != null">
+				and c.serialnum like '%${serialnum}%'
+			</if>
+			<if test="adminid != null">
+				and c.adminid = #{adminid}
+			</if>
+			<if test="softwarestatus != null">
+				and c.softwarestatus = #{softwarestatus}
+			</if>
+			<if test="certificatedate != null ">
+				and certificatedate = #{certificatedate}
+			</if>
+			<if test="certificatedate1 != null and certificatedate2 !=null">
+				and c.certificatedate <![CDATA[  >=  ]]> '${certificatedate1}' and  c.certificatedate<![CDATA[   <=  ]]>'${certificatedate2}'
+			</if>
+			<if test="nameLevel !=null">
+				and b.fid = '${nameLevel}'
+			</if>
+			order by c.certificatedate
+		</where>
+    </select>
+    
+    <select id="queryAllSoftware" resultType="java.util.List" resultMap="result">
+		select * from (select * from software 
+							union ALL
+						select * from softwarehistory) c
+		<where>
+			<if test="true">
+				1 = 1
+			</if>
+			<if test="trialId != null">
+				and  c.trialId =  #{trialId}
+			</if>
+			<if test="serialnum != null">
+				and serialnum like '%${serialnum}%'
+			</if>
+			<if test="adminid != null">
+				and adminid  = #{adminid}
+			</if>
+
+			<if test="trialIdNull != null">
+				and c.trialId is not NULL
+			</if>
+			<if test="softwarestatus != null">
+				and softwarestatus = #{softwarestatus}
+			</if>
+			<if test="certificatedate1 != null and certificatedate2 !=null">
+				and certificatedate <![CDATA[  >=  ]]> '${certificatedate1}' and  certificatedate<![CDATA[   <=  ]]>'${certificatedate2}'
+			</if>
+			<if test="auditdate1 != null and auditdate2 !=null">
+				and auditdate <![CDATA[  >=  ]]> '${auditdate1}' and  auditdate <![CDATA[   <=  ]]> '${auditdate2}'
+			</if>
+			<if test="createdate1 != null and createdate2 !=null">
+				and createdate <![CDATA[  >=  ]]> '${createdate1}' and  createdate <![CDATA[   <=  ]]> '${createdate2}'
+			</if>
+			<if test="certificatedate != null ">
+				and certificatedate = #{certificatedate}
+			</if>
+			order by certificatedate
+		</where>
+    </select>
+    <select id="countAllSoftware" resultType="int">
+		select count(1) from (select * from software 
+							union ALL
+						select * from softwarehistory) c
+		<where>
+			<if test="true">
+				1 = 1
+			</if>
+			<if test="serialnum != null">
+				and serialnum like '%${serialnum}%'
+			</if>
+			<if test="trialId != null">
+				and  c.trialId = #{trialId}
+			</if>
+			<if test="adminid != null">
+				and adminid  = #{adminid}
+			</if>
+			<if test="trialIdNull != null">
+				and c.trialId is not NULL
+			</if>
+			<if test="softwarestatus != null">
+				and softwarestatus = #{softwarestatus}
+			</if>
+			<if test="certificatedate1 != null and certificatedate2 !=null">
+				and certificatedate <![CDATA[  >=  ]]> '${certificatedate1}' and  certificatedate<![CDATA[   <=  ]]>'${certificatedate2}'
+			</if>
+			<if test="auditdate1 != null and auditdate2 !=null">
+				and auditdate <![CDATA[  >=  ]]> '${auditdate1}' and  auditdate <![CDATA[   <=  ]]> '${auditdate2}'
+			</if>
+			<if test="createdate1 != null and createdate2 !=null">
+				and createdate <![CDATA[  >=  ]]> '${createdate1}' and  createdate <![CDATA[   <=  ]]> '${createdate2}'
+			</if>
+			<if test="certificatedate != null ">
+				and certificatedate = #{certificatedate}
+			</if>
+			order by certificatedate
+		</where>
+    </select>
+    
+	<sql id="Query_Where_Clause">
+		<where>
+			<if test="true">
+				1 = 1
+			</if>
+			<if test="serialnum != null">
+				and serialnum like '%${serialnum}%'
+			</if>
+			<if test="adminid != null">
+				and adminid  = #{adminid}
+			</if>
+			<if test="trialId != null">
+				and trialId  = #{trialId}
+			</if>
+			<if test="trialIdNull != null">
+				and trialId is not NULL
+			</if>
+			<if test="softwarestatus != null">
+				and softwarestatus = #{softwarestatus}
+			</if>
+			<if test="certificatedate1 != null and certificatedate2 !=null">
+				and certificatedate <![CDATA[  >=  ]]> '${certificatedate1}' and  certificatedate<![CDATA[   <=  ]]>'${certificatedate2}'
+			</if>
+			<if test="auditdate1 != null and auditdate2 !=null">
+				and auditdate <![CDATA[  >=  ]]> '${auditdate1}' and  auditdate <![CDATA[   <=  ]]> '${auditdate2}'
+			</if>
+			<if test="createdate1 != null and createdate2 !=null">
+				and createdate <![CDATA[  >=  ]]> '${createdate1}' and  createdate <![CDATA[   <=  ]]> '${createdate2}'
+			</if>
+			<if test="certificatedate != null ">
+				and certificatedate = #{certificatedate}
+			</if>
+			order by certificatedate
+		</where>
+	</sql>
+
+	<sql id="Statistic_Query_Where_Clause">
+		<where>
+			<if test="true">
+				1 = 1
+			</if>
+			<if test="softwarestatus != null">
+				and softwarestatus = #{softwarestatus}
+			</if>
+			<if test="certificatedate != null">
+				and certificatedate = #{certificatedate}
+			</if>
+			<if test="beginDate != null and endDate !=null">
+				and DATE_FORMAT(certificatedate,'%Y-%m-%d') <![CDATA[  >=  ]]> '${beginDate}'
+				and DATE_FORMAT(certificatedate,'%Y-%m-%d') <![CDATA[  <=  ]]> '${endDate}'
+			</if>
+			GROUP BY
+			DATE_FORMAT(certificatedate,'%Y-%m-%d')
+		</where>
+	</sql>
+
+
+	<sql id="StatisticAudit_One_Query_Where_Clause">
+		<where>
+			<if test="true">
+				1 = 1
+				AND softwarestatus IN ('3','4', '5')
+				and trialId is not null
+			</if>
+			<if test="auditID != null">
+				and trialId = #{auditID}
+			</if>
+			<if test="auditdate1 != null and auditdate2 !=null">
+				and DATE_FORMAT(auditdate,'%Y-%m-%d') <![CDATA[  >=  ]]> '${auditdate1}'
+				and DATE_FORMAT(auditdate,'%Y-%m-%d') <![CDATA[  <=  ]]> '${auditdate2}'
+			</if>
+			GROUP BY
+				trialId
+		</where>
+	</sql>
+
+	<sql id="StatisticAudit_Two_Query_Where_Clause">
+		<where>
+			<if test="true">
+				1 = 1
+				AND softwarestatus IN ('4', '5')
+				and trialId is not null
+			</if>
+			<if test="auditID != null">
+				and trialId = #{auditID}
+			</if>
+			<if test="auditdate1 != null and auditdate2 !=null">
+				and DATE_FORMAT(auditdate,'%Y-%m-%d') <![CDATA[  >=  ]]> '${auditdate1}'
+				and DATE_FORMAT(auditdate,'%Y-%m-%d') <![CDATA[  <=  ]]> '${auditdate2}'
+			</if>
+			GROUP BY
+				softwarestatus,
+				trialId
+		</where>
+	</sql>
+
+</mapper>

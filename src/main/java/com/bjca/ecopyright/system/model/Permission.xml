@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Permission">
+	<resultMap id="result" type="Permission">
+		<result property="id" column="id" />
+		<result property="isuse" column="isuse" />
+		<result property="isinsert" column="isinsert" />
+		<result property="isdelete" column="isdelete" />
+		<result property="isupdate" column="isupdate" />
+		<result property="isselect" column="isselect" />
+		<result property="tablename" column="tablename" />
+		<result property="description" column="description" />
+		<result property="createdate" column="createdate" />
+		<result property="permissionname" column="permissionname" />
+		<result property="updatedate" column="updatedate" />
+	</resultMap>
+	<insert id="insertPermission" keyProperty="id" parameterType="com.bjca.ecopyright.system.model.Permission">
+		insert into permission
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,			
+			</if>
+			<if test="tablename != null">
+				tablename,			
+			</if>
+			<if test="description != null">
+				description,			
+			</if>
+			<if test="createdate != null">
+				createdate,			
+			</if>
+			<if test="permissionname != null">
+				permissionname,			
+			</if>
+			<if test="updatedate != null">
+				updatedate			
+			</if>
+			<if test="isuse != null">
+				isuse			
+			</if>
+			<if test="isinsert != null">
+				isinsert			
+			</if>
+			<if test="isdelete != null">
+				isdelete			
+			</if>
+			<if test="isupdate != null">
+				isupdate			
+			</if>
+			<if test="isselect != null">
+				isselect			
+			</if>
+		</trim>	
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id},			
+			</if>
+			<if test="tablename != null">
+				#{tablename},			
+			</if>
+			<if test="description != null">
+				#{description},			
+			</if>
+			<if test="createdate != null">
+				#{createdate},			
+			</if>
+			<if test="permissionname != null">
+				#{permissionname},			
+			</if>
+			<if test="updatedate != null">
+				#{updatedate}			
+			</if>
+			<if test="isuse != null">
+				#{isuse}			
+			</if>
+			<if test="isinsert != null">
+				#{isinsert}			
+			</if>
+			<if test="isdelete != null">
+				#{isdelete}			
+			</if>
+			<if test="isupdate != null">
+				#{isupdate}			
+			</if>
+			<if test="isselect != null">
+				#{isselect}			
+			</if>
+		</trim>	
+	</insert>
+
+	<update id="updatePermission" parameterType="com.bjca.ecopyright.system.model.Permission">
+		update permission
+		<set>
+			<if test="tablename != null">
+				tablename = #{tablename},			</if>
+			<if test="description != null">
+				description = #{description},			</if>
+			<if test="createdate != null">
+				createdate = #{createdate},			</if>
+			<if test="permissionname != null">
+				permissionname = #{permissionname},			</if>
+			<if test="updatedate != null">
+				updatedate = #{updatedate}			</if>
+			<if test="isuse != null">
+				isuse = #{isuse}			</if>
+			<if test="isinsert != null">
+				isinsert = #{isinsert}			</if>
+			<if test="isdelete != null">
+				isdelete = #{isdelete}			</if>
+			<if test="isupdate != null">
+				isupdate = #{isupdate}			</if>
+			<if test="isselect != null">
+				isselect = #{isselect}			</if>
+		</set>
+			where id=#{id}
+	</update>
+	<delete id="deletePermission">
+		delete from permission where id=#{id}
+	</delete>
+
+	<select id="selectPermission" resultMap="result">
+		select * from permission where id=#{id}
+    </select>
+    
+    <select id="queryPermission" resultType="java.util.List" resultMap="result">
+		select * from permission 
+		<include refid="Query_Where_Clause" />
+    </select>
+
+	<select id="countPermission" resultType="int" parameterType="java.util.Map">
+		select count(*) from permission 
+		<include refid="Query_Where_Clause" />
+   </select>
+    
+	<sql id="Query_Where_Clause">
+		<where>
+			<if test="true">
+				1 = 1
+			</if>
+			<if test="id!=null">
+         		<![CDATA[ id =id ]]>
+			</if>
+		</where>
+	</sql>
+	
+</mapper>
